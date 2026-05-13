@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jay Tee Dela Cruz — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#f5eed8;
+  --black:#442D1C;
+  --gray-50:#ecdfc0;
+  --gray-100:#d4c49a;
+  --gray-400:#9D9167;
+  --gray-700:#6b4a28;
+  --sage:#84592B;
+  --sage-light:#e8d1a7;
+  --blush:#743014;
+  --lavender:#9D9167;
+  --serif:'DM Serif Display',serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--black);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;cursor:none;overflow-x:hidden}
+
+/* GRAIN */
+body::after{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  opacity:0.38;mix-blend-mode:multiply;
+}
+
+/* SCROLL PROGRESS */
+#progress{position:fixed;top:0;left:0;height:1.5px;background:var(--sage);z-index:200;width:0%}
+
+/* CUSTOM CURSOR */
+#cursor-dot{
+  position:fixed;width:6px;height:6px;border-radius:50%;background:var(--black);
+  pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
+  transition:width .18s,height .18s,background .18s;
+}
+#cursor-ring{
+  position:fixed;width:36px;height:36px;border-radius:50%;
+  border:1px solid rgba(68,45,28,0.35);pointer-events:none;z-index:9997;
+  transform:translate(-50%,-50%);
+  transition:width .28s,height .28s,border-color .2s,opacity .2s;
+}
+body.cur-hover #cursor-dot{width:10px;height:10px}
+body.cur-hover #cursor-ring{width:54px;height:54px;border-color:rgba(17,17,17,0.18)}
+
+/* NAV — plain */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 2.5rem;
+  background:rgba(245,238,216,0.96);backdrop-filter:blur(8px);
+  border-bottom:0.5px solid var(--gray-100);
+}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;letter-spacing:0.01em;color:var(--black)}
+.nav-links{display:flex;gap:1.8rem}
+.nav-links a{
+  font-size:13px;color:var(--gray-400);text-decoration:none;
+  letter-spacing:0.04em;text-transform:uppercase;transition:color .2s;
+}
+.nav-links a:hover{color:var(--black)}
+
+/* HERO */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:92vh;border-bottom:0.5px solid var(--gray-100);
+}
+.hero-left{
+  padding:5rem 3rem 5rem 4rem;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:0.5px solid var(--gray-100);
+}
+.hero-eyebrow{
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--sage);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:10px;
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .7s ease .2s forwards;
+}
+.hero-eyebrow::before{
+  content:'';display:block;width:0;height:0.5px;background:var(--sage);
+  animation:lineGrow .6s ease .6s forwards;
+}
+@keyframes lineGrow{to{width:28px}}
+.hero-name{
+  font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.2rem);
+  line-height:1.08;margin-bottom:1.8rem;color:var(--black);
+  opacity:0;transform:translateY(22px);
+  animation:fadeUp .85s ease .38s forwards;
+}
+.hero-name em{font-style:italic;color:var(--blush)}
+.hero-tagline{
+  font-size:14px;color:var(--gray-700);max-width:380px;line-height:1.75;
+  margin-bottom:2.5rem;min-height:5em;
+  opacity:0;transform:translateY(16px);
+  animation:fadeUp .7s ease .6s forwards;
+}
+.cur-blink{
+  display:inline-block;width:1.5px;height:0.9em;background:var(--gray-400);
+  vertical-align:middle;margin-left:1px;animation:blink 1s step-end infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.magnetic-wrap{opacity:0;animation:fadeUp .7s ease 1.2s forwards;width:fit-content}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:13px;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--sage);text-decoration:none;
+  border-bottom:0.5px solid var(--sage);padding-bottom:3px;
+  transition:gap .2s;
+}
+.hero-cta:hover{gap:16px}
+.hero-right{
+  background:var(--gray-50);display:flex;flex-direction:column;
+  justify-content:flex-end;padding:4rem 3rem;
+  position:relative;overflow:hidden;
+}
+.hero-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--gray-100);border:0.5px solid var(--gray-100);
+  transform-style:preserve-3d;perspective:800px;
+  opacity:0;transform:translateY(22px);
+  animation:fadeUp .9s ease .8s forwards;
+  transition:transform .1s ease;
+}
+.stat-box{background:var(--gray-50);padding:1.8rem 1.5rem}
+.stat-num{font-family:var(--serif);font-size:2.2rem;color:var(--black);line-height:1}
+.stat-label{font-size:11px;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase;margin-top:6px}
+.availability{
+  position:absolute;top:2.5rem;right:2.5rem;
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;color:var(--gray-700);
+  opacity:0;animation:fadeUp .6s ease 1.0s forwards;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:#4caf7d;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+/* SECTIONS */
+section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100)}
+.section-label{
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--sage);margin-bottom:3rem;
+  display:flex;align-items:center;gap:10px;
+}
+.section-label::after{
+  content:'';flex:1;height:0.5px;background:var(--sage-light);
+  transform:scaleX(0);transform-origin:left;transition:transform .9s ease;
+}
+.section-label.lined::after{transform:scaleX(1)}
+
+/* ABOUT */
+#about .about-grid{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start}
+.about-heading{font-family:var(--serif);font-size:2rem;line-height:1.2;color:var(--black)}
+.about-body{font-size:15px;color:var(--gray-700);line-height:1.8}
+.about-body p+p{margin-top:1rem}
+
+/* REMOTE SETUP — redesigned as 3 cards */
+.setup-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--gray-100);border:0.5px solid var(--gray-100);
+  margin-top:2rem;
+}
+.setup-card{
+  background:var(--gray-50);padding:1.4rem 1.2rem;
+  display:flex;flex-direction:column;align-items:flex-start;
+  transition:background .2s;
+}
+.setup-card:hover{background:var(--white)}
+.setup-card-icon{
+  font-size:1.3rem;color:var(--sage);margin-bottom:10px;
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  background:var(--sage-light);border-radius:50%;
+}
+.setup-card-title{font-size:13px;font-weight:500;color:var(--black);line-height:1.3}
+.setup-card-sub{font-size:11px;color:var(--gray-400);margin-top:3px;letter-spacing:0.04em;text-transform:uppercase}
+
+/* SKILLS SECTION BG */
+#skills{
+  position:relative;overflow:hidden;
+  background-image:url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1600&q=80');
+  background-size:cover;background-position:center;
+}
+#skills::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:rgba(245,238,216,0.91);
+}
+#skills>*{position:relative;z-index:1}
+
+/* SERVICES SECTION BG */
+#services{
+  position:relative;overflow:hidden;
+  background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80');
+  background-size:cover;background-position:center;
+}
+#services::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:rgba(245,238,216,0.91);
+}
+#services>*{position:relative;z-index:1}
+
+/* SKILLS — 5 columns for clean 2×5 grid */
+#skills .skills-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:1px;background:var(--gray-100);border:0.5px solid var(--gray-100);
+}
+.skill-card{
+  background:var(--white);padding:1.5rem;
+  opacity:0;transform:translateY(18px);
+  transition:background .2s,transform .2s,opacity .45s ease;
+}
+.skill-card.vis{opacity:1;transform:none}
+.skill-card:hover{background:var(--gray-50);transform:translateY(-2px)}
+.skill-icon{font-size:18px;color:var(--sage);margin-bottom:10px;transition:color .2s}
+.skill-card:hover .skill-icon{color:var(--blush)}
+.skill-name{font-size:14px;font-weight:500;color:var(--black);line-height:1.3}
+.skill-cat{font-size:11px;color:var(--gray-400);margin-top:4px;letter-spacing:0.04em;text-transform:uppercase}
+
+/* SERVICES */
+#services .services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--gray-100);border:0.5px solid var(--gray-100);
+}
+.service-item{
+  background:var(--white);padding:1.5rem;
+  opacity:0;transform:translateY(16px);
+  transition:background .2s,opacity .45s ease,transform .45s ease;
+}
+.service-item.vis{opacity:1;transform:none}
+.service-item:hover{background:var(--gray-50)}
+.service-num{font-size:11px;color:var(--sage);letter-spacing:0.08em;margin-bottom:8px;font-family:var(--serif)}
+.service-name{font-size:14px;font-weight:500;color:var(--black);line-height:1.4}
+
+/* EXPERIENCE */
+#experience .exp-list{display:flex;flex-direction:column;gap:0}
+.exp-item{
+  display:grid;grid-template-columns:200px 1fr;gap:2rem;
+  padding:2rem 0;border-bottom:0.5px solid var(--gray-100);
+  opacity:0;transform:translateX(-22px);
+  transition:opacity .55s ease,transform .55s ease;
+}
+.exp-item.vis{opacity:1;transform:none}
+.exp-item:first-child{border-top:0.5px solid var(--gray-100)}
+.exp-date{font-size:12px;color:var(--sage);letter-spacing:0.04em;padding-top:4px}
+.exp-role{font-weight:500;font-size:15px;color:var(--black)}
+.exp-company{font-size:13px;color:var(--gray-400);margin-top:2px}
+.exp-desc{font-size:14px;color:var(--gray-700);margin-top:10px;line-height:1.7}
+
+/* CERTIFICATIONS */
+#certifications .cert-list{
+  display:flex;flex-direction:column;gap:1px;
+  background:var(--gray-100);border:0.5px solid var(--gray-100);
+}
+.cert-item{
+  background:var(--white);padding:1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  opacity:0;transform:translateY(14px);
+  transition:background .2s,opacity .5s ease,transform .5s ease;
+}
+.cert-item.vis{opacity:1;transform:none}
+.cert-item:hover{background:var(--gray-50)}
+.cert-info{}
+.cert-name{font-weight:500;font-size:14px;color:var(--black)}
+.cert-org{font-size:12px;color:var(--gray-400);margin-top:2px}
+.cert-year{
+  font-family:var(--serif);font-size:1.4rem;color:var(--sage-light);
+  transition:color .3s;
+}
+.cert-item:hover .cert-year{color:var(--sage)}
+
+/* PROJECTS */
+#projects .projects-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--gray-100);border:0.5px solid var(--gray-100);
+}
+.project-card{
+  position:relative;overflow:hidden;
+  min-height:300px;padding:0;
+  display:flex;flex-direction:column;
+  opacity:0;transform:translateY(24px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.project-card.vis{opacity:1;transform:none}
+.project-card-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transition:transform .6s ease;
+  filter:brightness(0.38) saturate(0.8);
+}
+.project-card:hover .project-card-bg{transform:scale(1.06);filter:brightness(0.3) saturate(0.8)}
+.project-card::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.15) 60%,transparent 100%);
+}
+.project-card-content{
+  position:relative;z-index:2;
+  padding:2rem;display:flex;flex-direction:column;height:100%;flex:1;
+}
+.project-num{
+  font-family:var(--serif);font-size:1.5rem;color:rgba(255,255,255,0.2);
+  margin-bottom:auto;padding-bottom:1rem;transition:color .3s;
+}
+.project-card:hover .project-num{color:rgba(255,255,255,0.35)}
+.project-title{font-weight:500;font-size:16px;color:#fff;margin-bottom:8px}
+.project-desc{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.7;flex:1}
+.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.2rem}
+.tag{
+  font-size:11px;letter-spacing:0.06em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);border:0.5px solid rgba(255,255,255,0.2);
+  padding:4px 10px;transition:border-color .2s,color .2s;
+}
+.project-card:hover .tag{border-color:rgba(255,255,255,0.55);color:#fff}
+.project-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;letter-spacing:0.06em;text-transform:uppercase;
+  color:#fff;text-decoration:none;margin-top:1rem;
+  border-bottom:0.5px solid rgba(255,255,255,0.4);padding-bottom:2px;width:fit-content;
+  transition:gap .2s,border-color .2s;
+}
+.project-link:hover{gap:10px;border-color:#fff}
+
+/* CONTACT */
+#contact .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-heading{font-family:var(--serif);font-size:2.2rem;line-height:1.15;margin-bottom:1rem}
+.contact-sub{font-size:14px;color:var(--gray-700);max-width:340px;line-height:1.75}
+.contact-items{display:flex;flex-direction:column;gap:1px;background:var(--gray-100);border:0.5px solid var(--gray-100)}
+.contact-item{
+  background:var(--white);padding:1.25rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:14px;transition:background .2s,padding-left .25s;
+}
+.contact-item:hover{background:var(--gray-50);padding-left:1.85rem}
+.contact-item-label{color:var(--gray-400);font-size:12px;text-transform:uppercase;letter-spacing:0.08em}
+.contact-item-val{color:var(--black);font-size:13px}
+
+/* FOOTER */
+footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--gray-400)}
+
+/* GENERIC REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.vis{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="progress"></div>
+
+<nav>
+  <span class="nav-logo">Jay Tee Dela Cruz</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#services">Services</a>
+    <a href="#experience">Experience</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Available for remote work</div>
+    <h1 class="hero-name">Jay Tee<br><em>Dela Cruz</em></h1>
+    <p class="hero-tagline" id="hero-tagline"></p>
+    <div class="magnetic-wrap" id="mag-wrap">
+      <a href="#contact" class="hero-cta" id="hero-cta">Get in touch →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="availability">
+      <span class="dot"></span>Open to opportunities
+    </div>
+    <div class="hero-stats" id="stats-panel">
+      <div class="stat-box">
+        <div class="stat-num" data-count="300" data-suffix="mbps">0</div>
+        <div class="stat-label">Fiber Connection</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" data-count="3">0</div>
+        <div class="stat-label">Timezones (US·UK·AU)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" data-count="12" data-suffix="+">0</div>
+        <div class="stat-label">Services Offered</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">AI</div>
+        <div class="stat-label">Workflow Focus</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div class="reveal">
+      <h2 class="about-heading">Quality-driven. Process-oriented. Remote-ready.</h2>
+    </div>
+    <div class="about-body reveal" style="transition-delay:.12s">
+      <p>I'm a Software Quality Assurance professional transitioning into AI-assisted workflow support, operations, and remote administrative work. My experience includes workflow coordination, issue tracking, documentation, task management, and supporting organized processes in fast-paced environments.</p>
+      <p>I'm proficient in tools such as Google Workspace, Jira, ChatGPT, Claude, Notion, Trello, and Canva. I'm currently focused on learning AI automation, workflow systems, and productivity optimization to support modern remote teams more efficiently.</p>
+      <div class="setup-cards">
+        <div class="setup-card">
+          <div class="setup-card-icon">◎</div>
+          <div class="setup-card-title">300 Mbps Fiber</div>
+          <div class="setup-card-sub">+ Backup Internet</div>
+        </div>
+        <div class="setup-card">
+          <div class="setup-card-icon">□</div>
+          <div class="setup-card-title">Dedicated Workspace</div>
+          <div class="setup-card-sub">Home Office Setup</div>
+        </div>
+        <div class="setup-card">
+          <div class="setup-card-icon">◷</div>
+          <div class="setup-card-title">US · UK · AU</div>
+          <div class="setup-card-sub">Timezone Flexible</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <div class="skills-grid" id="skills-grid">
+    <div class="skill-card"><div class="skill-icon">⟳</div><div class="skill-name">Workflow Coordination</div><div class="skill-cat">Operations</div></div>
+    <div class="skill-card"><div class="skill-icon">◈</div><div class="skill-name">AI Productivity Tools</div><div class="skill-cat">ChatGPT · Claude</div></div>
+    <div class="skill-card"><div class="skill-icon">≡</div><div class="skill-name">Process Documentation</div><div class="skill-cat">Documentation</div></div>
+    <div class="skill-card"><div class="skill-icon">◎</div><div class="skill-name">Task & Issue Tracking</div><div class="skill-cat">Jira · Trello</div></div>
+    <div class="skill-card"><div class="skill-icon">□</div><div class="skill-name">Google Workspace</div><div class="skill-cat">Productivity</div></div>
+    <div class="skill-card"><div class="skill-icon">⊞</div><div class="skill-name">Data Entry & File Org</div><div class="skill-cat">Administration</div></div>
+    <div class="skill-card"><div class="skill-icon">◇</div><div class="skill-name">Administrative Support</div><div class="skill-cat">Operations</div></div>
+    <div class="skill-card"><div class="skill-icon">✓</div><div class="skill-name">QA & Systems Thinking</div><div class="skill-cat">Quality Assurance</div></div>
+    <div class="skill-card"><div class="skill-icon">◉</div><div class="skill-name">Professional Communication</div><div class="skill-cat">Soft Skills</div></div>
+    <div class="skill-card"><div class="skill-icon">◷</div><div class="skill-name">Time Management</div><div class="skill-cat">Soft Skills</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">Services</div>
+  <div class="services-grid" id="services-grid">
+    <div class="service-item"><div class="service-num">01</div><div class="service-name">AI Workflow Support</div></div>
+    <div class="service-item"><div class="service-num">02</div><div class="service-name">AI-Assisted Administrative Support</div></div>
+    <div class="service-item"><div class="service-num">03</div><div class="service-name">Workflow Coordination & Process Organization</div></div>
+    <div class="service-item"><div class="service-num">04</div><div class="service-name">AI Productivity Systems</div></div>
+    <div class="service-item"><div class="service-num">05</div><div class="service-name">Documentation & SOP Creation</div></div>
+    <div class="service-item"><div class="service-num">06</div><div class="service-name">Task & Project Management</div></div>
+    <div class="service-item"><div class="service-num">07</div><div class="service-name">Google Workspace Support</div></div>
+    <div class="service-item"><div class="service-num">08</div><div class="service-name">Research & Information Organization</div></div>
+    <div class="service-item"><div class="service-num">09</div><div class="service-name">AI Prompt Assistance (ChatGPT, Claude, Gemini)</div></div>
+    <div class="service-item"><div class="service-num">10</div><div class="service-name">Data Entry & File Organization</div></div>
+    <div class="service-item"><div class="service-num">11</div><div class="service-name">QA & Workflow Testing Support</div></div>
+    <div class="service-item"><div class="service-num">12</div><div class="service-name">Operations & Remote Team Support</div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-date">2019 — Present</div>
+      <div>
+        <div class="exp-role">Software Quality Assurance</div>
+        <div class="exp-company">Iloilo Supermart, Inc.</div>
+        <div class="exp-desc">Performed quality assurance testing, issue tracking, and workflow coordination in fast-paced retail environments. Managed documentation, task tracking via Jira and Trello, and ensured organized processes across teams. Currently expanding into AI-assisted workflow support and remote operations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">Certifications</div>
+  <div class="cert-list" id="cert-list">
+    <div class="cert-item">
+      <div class="cert-info">
+        <div class="cert-name">UX+ Conference</div>
+        <div class="cert-org">UX+ · Design & User Experience</div>
+      </div>
+      <div class="cert-year">2023</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-info">
+        <div class="cert-name">UX+ Conference</div>
+        <div class="cert-org">UX+ · Design & User Experience</div>
+      </div>
+      <div class="cert-year">2024</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-info">
+        <div class="cert-name">UX+ Conference</div>
+        <div class="cert-org">UX+ · Design & User Experience</div>
+      </div>
+      <div class="cert-year">2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <div class="projects-grid" id="proj-grid">
+    <div class="project-card">
+      <div class="project-card-bg" style="background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=800&q=80')"></div>
+      <div class="project-card-content">
+        <div class="project-num">01</div>
+        <div class="project-title">AI-Assisted Workflow System</div>
+        <div class="project-desc">Designed and documented an AI-assisted workflow using ChatGPT and Claude to streamline task management, communication templates, and process documentation for remote teams.</div>
+        <div class="project-tags"><span class="tag">Claude</span><span class="tag">ChatGPT</span><span class="tag">Notion</span></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-bg" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80')"></div>
+      <div class="project-card-content">
+        <div class="project-num">02</div>
+        <div class="project-title">QA Documentation Framework</div>
+        <div class="project-desc">Developed a structured documentation framework for QA processes including test case templates, issue tracking workflows, and reporting standards using Google Workspace and Jira.</div>
+        <div class="project-tags"><span class="tag">Jira</span><span class="tag">Google Docs</span><span class="tag">QA</span></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-bg" style="background-image:url('https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=800&q=80')"></div>
+      <div class="project-card-content">
+        <div class="project-num">03</div>
+        <div class="project-title">Remote Ops Setup Guide</div>
+        <div class="project-desc">Created a comprehensive guide for remote operations setup covering tools, communication protocols, timezone management, and productivity best practices for distributed teams.</div>
+        <div class="project-tags"><span class="tag">Documentation</span><span class="tag">Trello</span><span class="tag">Canva</span></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-bg" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80')"></div>
+      <div class="project-card-content">
+        <div class="project-num">04</div>
+        <div class="project-title">Betty's Ilonggo Table & Bakehouse</div>
+        <div class="project-desc">A Filipino restaurant and bakehouse focused on traditional Ilonggo cuisine with a modern and cozy dining experience. Known among locals and visitors for serving nostalgic home-style dishes in a stylish but welcoming setting.</div>
+        <div class="project-tags"><span class="tag">Next.js</span><span class="tag">Vercel</span><span class="tag">Web Design</span></div>
+        <a href="https://bettys-restaurant.vercel.app/" target="_blank" class="project-link">View Live →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <h2 class="contact-heading">Let's work<br><em style="font-style:italic;color:var(--blush)">together.</em></h2>
+      <p class="contact-sub">Open to remote roles in operations, administrative support, AI workflow assistance, and QA. Available across US, UK, and AU timezones.</p>
+    </div>
+    <div class="contact-items reveal" style="transition-delay:.12s">
+      <div class="contact-item">
+        <span class="contact-item-label">Location</span>
+        <span class="contact-item-val">Philippines (Remote)</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Timezones</span>
+        <span class="contact-item-val">US · UK · AU</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Email</span>
+        <span class="contact-item-val">jaytee.delacruz.ea@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">LinkedIn</span>
+        <span class="contact-item-val"><a href="https://www.linkedin.com/in/jay-tee-dela-cruz-6a6ab840a/" target="_blank" style="color:var(--black);text-decoration:none;border-bottom:0.5px solid var(--gray-100)">Jay Tee Dela Cruz</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Status</span>
+        <span class="contact-item-val" style="display:flex;align-items:center;gap:8px"><span class="dot"></span> Available now</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Jay Tee Dela Cruz</span>
+  <span>QA · AI Workflows · Remote Operations</span>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  dot.style.left=mx+'px'; dot.style.top=my+'px';
+});
+(function tick(){
+  rx+=(mx-rx)*0.11; ry+=(my-ry)*0.11;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button,.skill-card,.project-card,.contact-item,.service-item,.cert-item,.setup-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cur-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cur-hover'));
+});
+
+/* ── SCROLL PROGRESS ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('progress').style.width=
+    (window.scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';
+},{passive:true});
+
+/* ── SECTION LINE ── */
+document.querySelectorAll('.section-label').forEach(el=>{
+  new IntersectionObserver(([e])=>{
+    if(e.isIntersecting) el.classList.add('lined');
+  },{threshold:0.1}).observe(el);
+});
+
+/* ── GENERIC REVEAL ── */
+document.querySelectorAll('.reveal').forEach(el=>{
+  new IntersectionObserver(([e])=>{
+    if(e.isIntersecting) el.classList.add('vis');
+  },{threshold:0.1}).observe(el);
+});
+
+/* ── SKILL CARDS STAGGER ── */
+const skillGrid=document.getElementById('skills-grid');
+if(skillGrid){
+  new IntersectionObserver(([e])=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.skill-card').forEach((c,i)=>{
+        setTimeout(()=>c.classList.add('vis'),i*55);
+      });
+    }
+  },{threshold:0.1}).observe(skillGrid);
+}
+
+/* ── SERVICES STAGGER ── */
+const servGrid=document.getElementById('services-grid');
+if(servGrid){
+  new IntersectionObserver(([e])=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.service-item').forEach((c,i)=>{
+        setTimeout(()=>c.classList.add('vis'),i*50);
+      });
+    }
+  },{threshold:0.1}).observe(servGrid);
+}
+
+/* ── PROJECT CARDS STAGGER ── */
+const projGrid=document.getElementById('proj-grid');
+if(projGrid){
+  new IntersectionObserver(([e])=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.project-card').forEach((c,i)=>{
+        setTimeout(()=>c.classList.add('vis'),i*100);
+      });
+    }
+  },{threshold:0.1}).observe(projGrid);
+}
+
+/* ── EXP ITEMS STAGGER ── */
+const expItems=document.querySelectorAll('.exp-item');
+if(expItems.length){
+  new IntersectionObserver(([e])=>{
+    if(e.isIntersecting){
+      expItems.forEach((c,i)=>setTimeout(()=>c.classList.add('vis'),i*120));
+    }
+  },{threshold:0.1}).observe(expItems[0]);
+}
+
+/* ── CERT ITEMS STAGGER ── */
+const certList=document.getElementById('cert-list');
+if(certList){
+  new IntersectionObserver(([e])=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.cert-item').forEach((c,i)=>{
+        setTimeout(()=>c.classList.add('vis'),i*100);
+      });
+    }
+  },{threshold:0.1}).observe(certList);
+}
+
+/* ── COUNTER ANIMATION ── */
+function countUp(el){
+  const target=+el.dataset.count;
+  const sfx=el.dataset.suffix||'';
+  const dur=1100; const t0=performance.now();
+  (function f(now){
+    const p=Math.min((now-t0)/dur,1);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(e*target)+sfx;
+    if(p<1) requestAnimationFrame(f);
+  })(t0);
+}
+const statsPanel=document.getElementById('stats-panel');
+if(statsPanel){
+  new IntersectionObserver(([e])=>{
+    if(e.isIntersecting) document.querySelectorAll('[data-count]').forEach(countUp);
+  },{threshold:0.5}).observe(statsPanel);
+}
+
+/* ── PARALLAX TILT ── */
+if(statsPanel){
+  statsPanel.addEventListener('mousemove',e=>{
+    const r=statsPanel.getBoundingClientRect();
+    const dx=(e.clientX-r.left-r.width/2)/(r.width/2);
+    const dy=(e.clientY-r.top-r.height/2)/(r.height/2);
+    statsPanel.style.transform=`rotateY(${dx*7}deg) rotateX(${-dy*4.5}deg)`;
+  });
+  statsPanel.addEventListener('mouseleave',()=>{
+    statsPanel.style.transition='transform .5s ease';
+    statsPanel.style.transform='';
+    setTimeout(()=>statsPanel.style.transition='transform .1s ease',500);
+  });
+  statsPanel.addEventListener('mouseenter',()=>{
+    statsPanel.style.transition='transform .1s ease';
+  });
+}
+
+/* ── MAGNETIC BUTTON ── */
+const magWrap=document.getElementById('mag-wrap');
+const magBtn=document.getElementById('hero-cta');
+if(magWrap&&magBtn){
+  magWrap.addEventListener('mousemove',e=>{
+    const r=magWrap.getBoundingClientRect();
+    const dx=(e.clientX-r.left-r.width/2)*0.32;
+    const dy=(e.clientY-r.top-r.height/2)*0.32;
+    magBtn.style.transition='transform .1s ease';
+    magBtn.style.transform=`translate(${dx}px,${dy}px)`;
+  });
+  magWrap.addEventListener('mouseleave',()=>{
+    magBtn.style.transition='transform .45s ease';
+    magBtn.style.transform='';
+  });
+}
+
+/* ── TYPEWRITER ── */
+const tagEl=document.getElementById('hero-tagline');
+const txt='QA Professional & AI-Assisted Workflow Specialist — bridging quality systems, documentation, and modern productivity tools for remote-first teams.';
+let i=0;
+function type(){
+  if(i<=txt.length){
+    tagEl.innerHTML=txt.slice(0,i)+'<span class="cur-blink"></span>';
+    i++;
+    setTimeout(type,i<4?80:i<txt.length?21:0);
+  }
+}
+setTimeout(type,900);
+</script>
+</body>
+</html>
