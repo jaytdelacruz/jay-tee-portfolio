@@ -116,10 +116,17 @@ section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100)}
   padding:1.6rem 1.4rem;background:var(--white);
   border:0.5px solid var(--gray-100);border-radius:14px;
   min-width:110px;flex:0 0 auto;
-  transition:transform .2s,box-shadow .2s,border-color .2s;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  overflow:hidden;
 }
-.tool-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(68,45,28,0.1);border-color:var(--sage-light)}
-.tool-logo{width:44px;height:44px;object-fit:contain}
+.tool-card:hover{transform:translateY(-6px) scale(1.04);box-shadow:0 12px 32px rgba(68,45,28,0.13);border-color:var(--sage-light)}
+.tool-logo{
+  width:52px;height:52px;object-fit:contain;
+  image-rendering:-webkit-optimize-contrast;
+  image-rendering:crisp-edges;
+  transition:transform .25s ease;
+}
+.tool-card:hover .tool-logo{transform:scale(1.18)}
 .tool-name{font-size:12px;font-weight:500;color:var(--black);text-align:center;line-height:1.3}
 
 /* SKILLS & SERVICES — combined section */
@@ -325,31 +332,31 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
   <div class="section-label">Tools I Use</div>
   <div class="tools-grid">
     <div class="tool-card reveal">
-      <img src="https://icon.horse/icon/workspace.google.com" class="tool-logo" alt="Google Workspace" />
+      <img src="https://icon.horse/icon/workspace.google.com?size=128" class="tool-logo" alt="Google Workspace" />
       <span class="tool-name">Google Workspace</span>
     </div>
     <div class="tool-card reveal" style="transition-delay:.05s">
-      <img src="https://icon.horse/icon/atlassian.com" class="tool-logo" alt="Jira" />
+      <img src="https://icon.horse/icon/atlassian.com?size=128" class="tool-logo" alt="Jira" />
       <span class="tool-name">Jira</span>
     </div>
     <div class="tool-card reveal" style="transition-delay:.1s">
-      <img src="https://icon.horse/icon/canva.com" class="tool-logo" alt="Canva" />
+      <img src="https://icon.horse/icon/canva.com?size=128" class="tool-logo" alt="Canva" />
       <span class="tool-name">Canva</span>
     </div>
     <div class="tool-card reveal" style="transition-delay:.15s">
-      <img src="https://icon.horse/icon/chatgpt.com" class="tool-logo" alt="ChatGPT" />
+      <img src="https://icon.horse/icon/chatgpt.com?size=128" class="tool-logo" alt="ChatGPT" />
       <span class="tool-name">ChatGPT</span>
     </div>
     <div class="tool-card reveal" style="transition-delay:.2s">
-      <img src="https://icon.horse/icon/claude.ai" class="tool-logo" alt="Claude" />
+      <img src="https://icon.horse/icon/claude.ai?size=128" class="tool-logo" alt="Claude" />
       <span class="tool-name">Claude</span>
     </div>
     <div class="tool-card reveal" style="transition-delay:.25s">
-      <img src="https://icon.horse/icon/capcut.com" class="tool-logo" alt="CapCut" />
+      <img src="https://icon.horse/icon/capcut.com?size=128" class="tool-logo" alt="CapCut" />
       <span class="tool-name">CapCut</span>
     </div>
     <div class="tool-card reveal" style="transition-delay:.3s">
-      <img src="https://icon.horse/icon/notion.so" class="tool-logo" alt="Notion" />
+      <img src="https://icon.horse/icon/notion.so?size=128" class="tool-logo" alt="Notion" />
       <span class="tool-name">Notion</span>
     </div>
   </div>
