@@ -207,16 +207,22 @@ section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100)}
 
 /* SMM SHOWCASE */
 #smm{background:var(--gray-50)}
-.smm-category{margin-bottom:3rem}
-.smm-category:last-child{margin-bottom:0}
-.smm-category-title{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:1.2rem}
-.smm-fan{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-.smm-item{position:relative;cursor:pointer;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(68,45,28,0.1);transition:transform .3s ease,box-shadow .3s ease;background:var(--white)}
-.smm-item img{width:100%;height:240px;object-fit:cover;display:block;transition:transform .4s ease}
-.smm-item:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(68,45,28,0.18)}
-.smm-item:hover img{transform:scale(1.04)}
-.smm-item-overlay{position:absolute;inset:0;background:rgba(68,45,28,0);display:flex;align-items:flex-end;padding:0.9rem;transition:background .3s ease}
+.smm-single-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@keyframes smmPulse{0%,100%{transform:translateY(0);box-shadow:0 4px 16px rgba(68,45,28,0.1)}50%{transform:translateY(-5px);box-shadow:0 12px 28px rgba(68,45,28,0.2)}}
+@keyframes hintPing{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.85}50%{transform:translate(-50%,-50%) scale(1.2);opacity:1}}
+.smm-item{position:relative;cursor:pointer;border-radius:10px;overflow:hidden;background:var(--white);animation:smmPulse 2.5s ease-in-out infinite}
+.smm-item:nth-child(2){animation-delay:.4s}
+.smm-item:nth-child(3){animation-delay:.8s}
+.smm-item:nth-child(4){animation-delay:1.2s}
+.smm-item:hover{animation:none;transform:translateY(-6px);box-shadow:0 14px 36px rgba(68,45,28,0.22)}
+.smm-item img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .4s ease}
+.smm-item:hover img{transform:scale(1.05)}
+.smm-click-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;font-size:16px;animation:hintPing 1.6s ease-in-out infinite;transition:opacity .2s;pointer-events:none}
+.smm-item:hover .smm-click-hint{opacity:0}
+.smm-item-overlay{position:absolute;inset:0;background:rgba(68,45,28,0);display:flex;flex-direction:column;justify-content:space-between;padding:0.8rem;transition:background .3s ease}
 .smm-item:hover .smm-item-overlay{background:rgba(68,45,28,0.5)}
+.smm-item-cat{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;background:rgba(255,255,255,0.2);color:#fff;padding:3px 8px;border-radius:20px;width:fit-content;opacity:0;transition:opacity .3s}
+.smm-item:hover .smm-item-cat{opacity:1}
 .smm-item-label{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#fff;opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease}
 .smm-item:hover .smm-item-label{opacity:1;transform:translateY(0)}
 
@@ -576,31 +582,37 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
 <!-- SOCIAL MEDIA MANAGEMENT -->
 <section id="smm">
   <div class="section-label">Social Media Work</div>
-
-  <div class="smm-category reveal">
-    <div class="smm-category-title">Fashion & Lifestyle</div>
-    <div class="smm-fan">
-      <div class="smm-item" onclick="openLightbox(0)">
-        <img src="smm-fashion-1.jpg" alt="Gorpcore Essentials" />
-        <div class="smm-item-overlay"><span class="smm-item-label">Gorpcore Essentials</span></div>
-      </div>
-      <div class="smm-item" onclick="openLightbox(1)">
-        <img src="smm-fashion-2.jpg" alt="Clean Girl Aesthetic" />
-        <div class="smm-item-overlay"><span class="smm-item-label">Clean Girl Aesthetic</span></div>
+  <div class="smm-single-row">
+    <div class="smm-item" onclick="openLightbox(0)">
+      <img src="smm-fashion-1.jpg" alt="Gorpcore Essentials" />
+      <div class="smm-click-hint">👆</div>
+      <div class="smm-item-overlay">
+        <span class="smm-item-cat">Fashion & Lifestyle</span>
+        <span class="smm-item-label">Gorpcore Essentials</span>
       </div>
     </div>
-  </div>
-
-  <div class="smm-category reveal" style="transition-delay:.15s">
-    <div class="smm-category-title">Food & Restaurant</div>
-    <div class="smm-fan">
-      <div class="smm-item" onclick="openLightbox(2)">
-        <img src="smm-food-1.jpg" alt="2 for 1 Pizza Night" />
-        <div class="smm-item-overlay"><span class="smm-item-label">2 for 1 Pizza Night</span></div>
+    <div class="smm-item" onclick="openLightbox(1)">
+      <img src="smm-fashion-2.jpg" alt="Clean Girl Aesthetic" />
+      <div class="smm-click-hint">👆</div>
+      <div class="smm-item-overlay">
+        <span class="smm-item-cat">Fashion & Lifestyle</span>
+        <span class="smm-item-label">Clean Girl Aesthetic</span>
       </div>
-      <div class="smm-item" onclick="openLightbox(3)">
-        <img src="smm-food-2.jpg" alt="Weekly Meal Prep" />
-        <div class="smm-item-overlay"><span class="smm-item-label">Weekly Meal Prep</span></div>
+    </div>
+    <div class="smm-item" onclick="openLightbox(2)">
+      <img src="smm-food-1.jpg" alt="2 for 1 Pizza Night" />
+      <div class="smm-click-hint">👆</div>
+      <div class="smm-item-overlay">
+        <span class="smm-item-cat">Food & Restaurant</span>
+        <span class="smm-item-label">2 for 1 Pizza Night</span>
+      </div>
+    </div>
+    <div class="smm-item" onclick="openLightbox(3)">
+      <img src="smm-food-2.jpg" alt="Weekly Meal Prep" />
+      <div class="smm-click-hint">👆</div>
+      <div class="smm-item-overlay">
+        <span class="smm-item-cat">Food & Restaurant</span>
+        <span class="smm-item-label">Weekly Meal Prep</span>
       </div>
     </div>
   </div>
