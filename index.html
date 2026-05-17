@@ -205,6 +205,20 @@ section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100)}
 .cert-link{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--sage);text-decoration:none;border-bottom:0.5px solid var(--sage-light);padding-bottom:1px;transition:border-color .2s;white-space:nowrap}
 .cert-link:hover{border-color:var(--sage)}
 
+/* SMM SHOWCASE */
+#smm{background:var(--gray-50)}
+.smm-category{margin-bottom:3rem}
+.smm-category:last-child{margin-bottom:0}
+.smm-category-title{font-family:var(--serif);font-size:1.3rem;color:var(--black);margin-bottom:1.2rem;padding-bottom:0.7rem;border-bottom:0.5px solid var(--gray-100)}
+.smm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.smm-item{position:relative;overflow:hidden;border-radius:10px;cursor:pointer}
+.smm-item img{width:100%;height:320px;object-fit:cover;display:block;transition:transform .4s ease}
+.smm-item:hover img{transform:scale(1.05)}
+.smm-item-overlay{position:absolute;inset:0;background:rgba(68,45,28,0);display:flex;align-items:flex-end;padding:1rem;transition:background .3s ease}
+.smm-item:hover .smm-item-overlay{background:rgba(68,45,28,0.55)}
+.smm-item-label{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#fff;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
+.smm-item:hover .smm-item-label{opacity:1;transform:translateY(0)}
+
 /* PROJECTS */
 #projects .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-100);border:0.5px solid var(--gray-100)}
 .project-card{position:relative;overflow:hidden;min-height:300px;padding:0;display:flex;flex-direction:column;opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
@@ -276,6 +290,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
     <a href="#skills-services">Skills & Services</a>
     <a href="#exp-certs">Experience</a>
     <a href="#projects">Projects</a>
+    <a href="#smm">Social Media</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -541,6 +556,39 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
         <div class="project-desc">A Filipino restaurant and bakehouse focused on traditional Ilonggo cuisine with a modern and cozy dining experience. Known among locals and visitors for serving nostalgic home-style dishes in a stylish but welcoming setting.</div>
         <div class="project-tags"><span class="tag">Next.js</span><span class="tag">Vercel</span><span class="tag">Web Design</span></div>
         <a href="https://bettys-restaurant.vercel.app/" target="_blank" class="project-link">View Live →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL MEDIA MANAGEMENT -->
+<section id="smm">
+  <div class="section-label">Social Media Work</div>
+
+  <div class="smm-category reveal">
+    <div class="smm-category-title">Fashion & Lifestyle</div>
+    <div class="smm-grid">
+      <div class="smm-item">
+        <img src="smm-fashion-1.jpg" alt="Gorpcore Essentials" />
+        <div class="smm-item-overlay"><span class="smm-item-label">Gorpcore Essentials</span></div>
+      </div>
+      <div class="smm-item">
+        <img src="smm-fashion-2.jpg" alt="Clean Girl Aesthetic" />
+        <div class="smm-item-overlay"><span class="smm-item-label">Clean Girl Aesthetic</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="smm-category reveal" style="transition-delay:.15s">
+    <div class="smm-category-title">Food & Restaurant</div>
+    <div class="smm-grid">
+      <div class="smm-item">
+        <img src="smm-food-1.jpg" alt="2 for 1 Pizza Night" />
+        <div class="smm-item-overlay"><span class="smm-item-label">2 for 1 Pizza Night</span></div>
+      </div>
+      <div class="smm-item">
+        <img src="smm-food-2.jpg" alt="Weekly Meal Prep" />
+        <div class="smm-item-overlay"><span class="smm-item-label">Weekly Meal Prep</span></div>
       </div>
     </div>
   </div>
