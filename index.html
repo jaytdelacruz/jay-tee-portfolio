@@ -206,16 +206,20 @@ section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100)}
 .cert-link:hover{border-color:var(--sage)}
 
 /* SMM SHOWCASE */
-#smm{background:var(--gray-50);padding:3rem 4rem}
-.smm-category{margin-bottom:2rem}
+#smm{background:var(--gray-50)}
+.smm-category{margin-bottom:3.5rem}
 .smm-category:last-child{margin-bottom:0}
-.smm-category-title{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:0.8rem}
-.smm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem}
-.smm-item{position:relative;overflow:hidden;border-radius:8px;cursor:pointer}
-.smm-item img{width:100%;height:auto;display:block;transition:transform .4s ease}
-.smm-item:hover img{transform:scale(1.05)}
-.smm-item-overlay{position:absolute;inset:0;background:rgba(68,45,28,0);display:flex;align-items:flex-end;padding:0.7rem;transition:background .3s ease}
-.smm-item:hover .smm-item-overlay{background:rgba(68,45,28,0.55)}
+.smm-category-title{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:1.8rem}
+.smm-fan{display:flex;justify-content:center;align-items:flex-end;gap:-1rem;flex-wrap:wrap;gap:1.5rem;padding:1rem 0 2rem}
+.smm-item{position:relative;cursor:pointer;border-radius:10px;overflow:hidden;box-shadow:0 8px 28px rgba(68,45,28,0.18);transition:transform .35s ease,box-shadow .35s ease;width:200px;flex-shrink:0}
+.smm-item img{width:100%;height:auto;display:block}
+.smm-item:nth-child(1){transform:rotate(-4deg) translateY(8px)}
+.smm-item:nth-child(2){transform:rotate(-1.5deg) translateY(3px)}
+.smm-item:nth-child(3){transform:rotate(1.5deg) translateY(3px)}
+.smm-item:nth-child(4){transform:rotate(4deg) translateY(8px)}
+.smm-item:hover{transform:rotate(0deg) translateY(-10px) scale(1.04);box-shadow:0 18px 48px rgba(68,45,28,0.25);z-index:10}
+.smm-item-overlay{position:absolute;inset:0;background:rgba(68,45,28,0);display:flex;align-items:flex-end;padding:0.8rem;transition:background .3s ease}
+.smm-item:hover .smm-item-overlay{background:rgba(68,45,28,0.5)}
 .smm-item-label{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#fff;opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease}
 .smm-item:hover .smm-item-label{opacity:1;transform:translateY(0)}
 
@@ -567,7 +571,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
 
   <div class="smm-category reveal">
     <div class="smm-category-title">Fashion & Lifestyle</div>
-    <div class="smm-grid">
+    <div class="smm-fan">
       <div class="smm-item">
         <img src="smm-fashion-1.jpg" alt="Gorpcore Essentials" />
         <div class="smm-item-overlay"><span class="smm-item-label">Gorpcore Essentials</span></div>
@@ -581,7 +585,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
 
   <div class="smm-category reveal" style="transition-delay:.15s">
     <div class="smm-category-title">Food & Restaurant</div>
-    <div class="smm-grid">
+    <div class="smm-fan">
       <div class="smm-item">
         <img src="smm-food-1.jpg" alt="2 for 1 Pizza Night" />
         <div class="smm-item-overlay"><span class="smm-item-label">2 for 1 Pizza Night</span></div>
