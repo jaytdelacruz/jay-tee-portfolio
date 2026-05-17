@@ -207,21 +207,29 @@ section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100)}
 
 /* SMM SHOWCASE */
 #smm{background:var(--gray-50)}
-.smm-category{margin-bottom:3.5rem}
+.smm-category{margin-bottom:3rem}
 .smm-category:last-child{margin-bottom:0}
-.smm-category-title{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:1.8rem}
-.smm-fan{display:flex;justify-content:center;align-items:flex-end;gap:-1rem;flex-wrap:wrap;gap:1.5rem;padding:1rem 0 2rem}
-.smm-item{position:relative;cursor:pointer;border-radius:10px;overflow:hidden;box-shadow:0 8px 28px rgba(68,45,28,0.18);transition:transform .35s ease,box-shadow .35s ease;width:200px;flex-shrink:0}
-.smm-item img{width:100%;height:auto;display:block}
-.smm-item:nth-child(1){transform:rotate(-4deg) translateY(8px)}
-.smm-item:nth-child(2){transform:rotate(-1.5deg) translateY(3px)}
-.smm-item:nth-child(3){transform:rotate(1.5deg) translateY(3px)}
-.smm-item:nth-child(4){transform:rotate(4deg) translateY(8px)}
-.smm-item:hover{transform:rotate(0deg) translateY(-10px) scale(1.04);box-shadow:0 18px 48px rgba(68,45,28,0.25);z-index:10}
-.smm-item-overlay{position:absolute;inset:0;background:rgba(68,45,28,0);display:flex;align-items:flex-end;padding:0.8rem;transition:background .3s ease}
+.smm-category-title{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:1.2rem}
+.smm-fan{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.smm-item{position:relative;cursor:pointer;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(68,45,28,0.1);transition:transform .3s ease,box-shadow .3s ease;background:var(--white)}
+.smm-item img{width:100%;height:240px;object-fit:cover;display:block;transition:transform .4s ease}
+.smm-item:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(68,45,28,0.18)}
+.smm-item:hover img{transform:scale(1.04)}
+.smm-item-overlay{position:absolute;inset:0;background:rgba(68,45,28,0);display:flex;align-items:flex-end;padding:0.9rem;transition:background .3s ease}
 .smm-item:hover .smm-item-overlay{background:rgba(68,45,28,0.5)}
 .smm-item-label{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#fff;opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease}
 .smm-item:hover .smm-item-label{opacity:1;transform:translateY(0)}
+
+/* LIGHTBOX */
+.smm-lightbox{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.smm-lightbox.open{opacity:1;pointer-events:all}
+.smm-lightbox-inner{position:relative;display:flex;align-items:center;gap:1.5rem;max-width:90vw;max-height:90vh}
+.smm-lightbox img{max-height:85vh;max-width:70vw;object-fit:contain;border-radius:8px;display:block}
+.smm-lb-btn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex-shrink:0}
+.smm-lb-btn:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.7)}
+.smm-lb-close{position:absolute;top:-3rem;right:0;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);background:transparent;color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.smm-lb-close:hover{background:rgba(255,255,255,0.2)}
+.smm-lb-caption{position:absolute;bottom:-2.2rem;left:0;right:0;text-align:center;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6)}
 
 /* PROJECTS */
 #projects .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-100);border:0.5px solid var(--gray-100)}
@@ -572,11 +580,11 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
   <div class="smm-category reveal">
     <div class="smm-category-title">Fashion & Lifestyle</div>
     <div class="smm-fan">
-      <div class="smm-item">
+      <div class="smm-item" onclick="openLightbox(0)">
         <img src="smm-fashion-1.jpg" alt="Gorpcore Essentials" />
         <div class="smm-item-overlay"><span class="smm-item-label">Gorpcore Essentials</span></div>
       </div>
-      <div class="smm-item">
+      <div class="smm-item" onclick="openLightbox(1)">
         <img src="smm-fashion-2.jpg" alt="Clean Girl Aesthetic" />
         <div class="smm-item-overlay"><span class="smm-item-label">Clean Girl Aesthetic</span></div>
       </div>
@@ -586,17 +594,30 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
   <div class="smm-category reveal" style="transition-delay:.15s">
     <div class="smm-category-title">Food & Restaurant</div>
     <div class="smm-fan">
-      <div class="smm-item">
+      <div class="smm-item" onclick="openLightbox(2)">
         <img src="smm-food-1.jpg" alt="2 for 1 Pizza Night" />
         <div class="smm-item-overlay"><span class="smm-item-label">2 for 1 Pizza Night</span></div>
       </div>
-      <div class="smm-item">
+      <div class="smm-item" onclick="openLightbox(3)">
         <img src="smm-food-2.jpg" alt="Weekly Meal Prep" />
         <div class="smm-item-overlay"><span class="smm-item-label">Weekly Meal Prep</span></div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="smm-lightbox" id="smmLightbox" onclick="closeLightboxOutside(event)">
+  <div class="smm-lightbox-inner">
+    <button class="smm-lb-btn" onclick="prevImage()">&#8592;</button>
+    <div style="position:relative">
+      <button class="smm-lb-close" onclick="closeLightbox()">&#10005;</button>
+      <img id="lbImg" src="" alt="" />
+      <div class="smm-lb-caption" id="lbCaption"></div>
+    </div>
+    <button class="smm-lb-btn" onclick="nextImage()">&#8594;</button>
+  </div>
+</div>
 
 <!-- CONTACT -->
 <section id="contact">
@@ -682,6 +703,38 @@ setInterval(()=>{
     roleEl.style.transform='none';
   },420);
 },2500);
+
+/* LIGHTBOX */
+const smmImages=[
+  {src:'smm-fashion-1.jpg',caption:'Gorpcore Essentials'},
+  {src:'smm-fashion-2.jpg',caption:'Clean Girl Aesthetic'},
+  {src:'smm-food-1.jpg',caption:'2 for 1 Pizza Night'},
+  {src:'smm-food-2.jpg',caption:'Weekly Meal Prep'}
+];
+let lbIndex=0;
+function openLightbox(i){
+  lbIndex=i;
+  updateLightbox();
+  document.getElementById('smmLightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('smmLightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeLightboxOutside(e){if(e.target===document.getElementById('smmLightbox'))closeLightbox();}
+function nextImage(){lbIndex=(lbIndex+1)%smmImages.length;updateLightbox();}
+function prevImage(){lbIndex=(lbIndex-1+smmImages.length)%smmImages.length;updateLightbox();}
+function updateLightbox(){
+  document.getElementById('lbImg').src=smmImages[lbIndex].src;
+  document.getElementById('lbCaption').textContent=smmImages[lbIndex].caption+' '+(lbIndex+1)+' / '+smmImages.length;
+}
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('smmLightbox').classList.contains('open'))return;
+  if(e.key==='ArrowRight')nextImage();
+  if(e.key==='ArrowLeft')prevImage();
+  if(e.key==='Escape')closeLightbox();
+});
 </script>
 </body>
 </html>
