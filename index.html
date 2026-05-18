@@ -216,6 +216,7 @@ section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100)}
 .smm-item:nth-child(4){animation-delay:1.2s}
 .smm-item:hover{animation:none;transform:translateY(-6px);box-shadow:0 14px 36px rgba(68,45,28,0.22)}
 .smm-item img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .4s ease}
+.smm-coffee-row .smm-item img{height:auto;object-fit:contain;background:var(--white)}
 .smm-item:hover img{transform:scale(1.05)}
 .smm-click-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;font-size:15px;animation:hintPing 1.6s ease-in-out infinite;pointer-events:none;transition:opacity .2s}
 .smm-item:hover .smm-click-hint{opacity:0}
@@ -636,42 +637,39 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
     </div>
   </div>
 
-  <!-- Continuous Carousel -->
+  <!-- Coffee Grid -->
   <div class="smm-carousel-label">Coffee Around the World</div>
-  <div class="smm-marquee-wrap">
-    <div class="smm-marquee">
-      <div class="smm-marquee-item" onclick="openLightbox(4)">
-        <img src="smm-coffee-1.jpg" alt="Coffee Around the World" />
-        <div class="smm-marquee-item-overlay"><span class="smm-marquee-item-label">Coffee Around the World</span></div>
+  <div class="smm-single-row smm-coffee-row">
+    <div class="smm-item" onclick="openLightbox(4)">
+      <img src="smm-coffee-1.jpg" alt="Coffee Around the World" />
+      <div class="smm-click-hint">👆</div>
+      <div class="smm-item-overlay">
+        <span class="smm-item-cat">Coffee Around the World</span>
+        <span class="smm-item-label">Cover</span>
       </div>
-      <div class="smm-marquee-item" onclick="openLightbox(5)">
-        <img src="smm-coffee-2.jpg" alt="Italy" />
-        <div class="smm-marquee-item-overlay"><span class="smm-marquee-item-label">Italy</span></div>
+    </div>
+    <div class="smm-item" onclick="openLightbox(5)">
+      <img src="smm-coffee-2.jpg" alt="Italy" />
+      <div class="smm-click-hint">👆</div>
+      <div class="smm-item-overlay">
+        <span class="smm-item-cat">Coffee Around the World</span>
+        <span class="smm-item-label">Italy</span>
       </div>
-      <div class="smm-marquee-item" onclick="openLightbox(6)">
-        <img src="smm-coffee-3.jpg" alt="Ethiopia" />
-        <div class="smm-marquee-item-overlay"><span class="smm-marquee-item-label">Ethiopia</span></div>
+    </div>
+    <div class="smm-item" onclick="openLightbox(6)">
+      <img src="smm-coffee-3.jpg" alt="Ethiopia" />
+      <div class="smm-click-hint">👆</div>
+      <div class="smm-item-overlay">
+        <span class="smm-item-cat">Coffee Around the World</span>
+        <span class="smm-item-label">Ethiopia</span>
       </div>
-      <div class="smm-marquee-item" onclick="openLightbox(7)">
-        <img src="smm-coffee-4.jpg" alt="Vietnam" />
-        <div class="smm-marquee-item-overlay"><span class="smm-marquee-item-label">Vietnam</span></div>
-      </div>
-      <!-- Duplicated for seamless loop -->
-      <div class="smm-marquee-item" onclick="openLightbox(4)">
-        <img src="smm-coffee-1.jpg" alt="Coffee Around the World" />
-        <div class="smm-marquee-item-overlay"><span class="smm-marquee-item-label">Coffee Around the World</span></div>
-      </div>
-      <div class="smm-marquee-item" onclick="openLightbox(5)">
-        <img src="smm-coffee-2.jpg" alt="Italy" />
-        <div class="smm-marquee-item-overlay"><span class="smm-marquee-item-label">Italy</span></div>
-      </div>
-      <div class="smm-marquee-item" onclick="openLightbox(6)">
-        <img src="smm-coffee-3.jpg" alt="Ethiopia" />
-        <div class="smm-marquee-item-overlay"><span class="smm-marquee-item-label">Ethiopia</span></div>
-      </div>
-      <div class="smm-marquee-item" onclick="openLightbox(7)">
-        <img src="smm-coffee-4.jpg" alt="Vietnam" />
-        <div class="smm-marquee-item-overlay"><span class="smm-marquee-item-label">Vietnam</span></div>
+    </div>
+    <div class="smm-item" onclick="openLightbox(7)">
+      <img src="smm-coffee-4.jpg" alt="Vietnam" />
+      <div class="smm-click-hint">👆</div>
+      <div class="smm-item-overlay">
+        <span class="smm-item-cat">Coffee Around the World</span>
+        <span class="smm-item-label">Vietnam</span>
       </div>
     </div>
   </div>
@@ -701,7 +699,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
     <div class="contact-items reveal" style="transition-delay:.12s">
       <div class="contact-item"><span class="contact-item-label">Location</span><span class="contact-item-val">Philippines (Remote)</span></div>
       <div class="contact-item"><span class="contact-item-label">Timezones</span><span class="contact-item-val">US · UK · AU</span></div>
-      <div class="contact-item"><span class="contact-item-label">Email</span><span class="contact-item-val">jaytee.delacruz.ea@gmail.com</span></div>
+      <div class="contact-item"><span class="contact-item-label">Email</span><span class="contact-item-val"><a href="https://mail.google.com/mail/?view=cm&to=jaytee.delacruz.ea@gmail.com" target="_blank" style="color:var(--black);text-decoration:none;border-bottom:0.5px solid var(--gray-100)">jaytee.delacruz.ea@gmail.com</a></span></div>
       <div class="contact-item"><span class="contact-item-label">LinkedIn</span><span class="contact-item-val"><a href="https://www.linkedin.com/in/jay-tee-dela-cruz-6a6ab840a/" target="_blank" style="color:var(--black);text-decoration:none;border-bottom:0.5px solid var(--gray-100)">Jay Tee Dela Cruz</a></span></div>
       <div class="contact-item"><span class="contact-item-label">Status</span><span class="contact-item-val" style="display:flex;align-items:center;gap:8px"><span class="dot"></span> Available now</span></div>
     </div>
