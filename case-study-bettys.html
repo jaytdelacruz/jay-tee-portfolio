@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Case Study — Betty's Ilonggo Table & Bakehouse · Jay Tee Dela Cruz</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#ffffff;
+  --black:#442D1C;
+  --gray-50:#f7f5f2;
+  --gray-100:#e8e2d9;
+  --gray-400:#9D9167;
+  --gray-700:#6b4a28;
+  --sage:#84592B;
+  --sage-light:#e8d1a7;
+  --blush:#743014;
+  --serif:'DM Serif Display',serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--black);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* GRAIN */
+body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");opacity:0.38;mix-blend-mode:multiply}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:0.5px solid var(--gray-100)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;letter-spacing:0.01em;color:var(--black);text-decoration:none}
+.nav-back{font-size:13px;color:var(--gray-400);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color .2s;display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--black)}
+
+/* HERO */
+.cs-hero{padding:6rem 4rem 4rem;border-bottom:0.5px solid var(--gray-100);max-width:860px;margin:0 auto}
+.cs-type{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage);margin-bottom:1.5rem;display:flex;align-items:center;gap:10px}
+.cs-type::after{content:'';flex:1;height:0.5px;background:var(--sage-light)}
+.cs-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;color:var(--black);margin-bottom:1.5rem}
+.cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem}
+.cs-tag{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--sage);border:0.5px solid var(--sage-light);padding:4px 12px;border-radius:4px}
+.cs-live{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--sage);text-decoration:none;border-bottom:0.5px solid var(--sage);padding-bottom:2px;transition:gap .2s}
+.cs-live:hover{gap:14px}
+
+/* CONTENT */
+.cs-body{max-width:860px;margin:0 auto;padding:4rem}
+.cs-section{margin-bottom:4rem}
+.cs-section-label{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:1rem}
+.cs-section h2{font-family:var(--serif);font-size:1.6rem;color:var(--black);margin-bottom:1rem}
+.cs-section p{font-size:15px;color:var(--gray-700);line-height:1.8}
+.cs-section p+p{margin-top:1rem}
+
+/* RESULTS TABLE */
+.cs-table{width:100%;border-collapse:collapse;margin-top:1rem}
+.cs-table th,.cs-table td{padding:0.9rem 1.2rem;text-align:left;border-bottom:0.5px solid var(--gray-100);font-size:14px}
+.cs-table th{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);background:var(--gray-50);font-weight:400}
+.cs-table td:first-child{color:var(--gray-700)}
+.cs-table td:last-child{font-weight:500;color:var(--black)}
+
+/* NOTES */
+.cs-notes{list-style:none;padding:0}
+.cs-notes li{padding:0.7rem 0;border-bottom:0.5px solid var(--gray-100);font-size:14px;color:var(--gray-700);display:flex;align-items:flex-start;gap:10px}
+.cs-notes li::before{content:'—';color:var(--sage);flex-shrink:0}
+
+/* DIVIDER */
+.cs-divider{height:0.5px;background:var(--gray-100);margin:4rem 0}
+
+/* BACK FOOTER */
+.cs-footer{max-width:860px;margin:0 auto;padding:3rem 4rem;display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid var(--gray-100)}
+.cs-footer-back{font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray-400);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
+.cs-footer-back:hover{color:var(--black)}
+.cs-footer-name{font-family:var(--serif);font-size:1rem;color:var(--black)}
+
+@media(max-width:700px){
+  .cs-hero,.cs-body,.cs-footer{padding:3rem 1.5rem}
+  nav{padding:1rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Jay Tee Dela Cruz</a>
+  <a href="index.html#projects" class="nav-back">← Back to Portfolio</a>
+</nav>
+
+<div class="cs-hero">
+  <div class="cs-type">Case Study · Freelance Web Project</div>
+  <h1 class="cs-title">Betty's Ilonggo Table<br><em style="font-style:italic;color:var(--blush)">& Bakehouse</em></h1>
+  <div class="cs-tags">
+    <span class="cs-tag">Next.js</span>
+    <span class="cs-tag">Tailwind CSS</span>
+    <span class="cs-tag">Vercel</span>
+    <span class="cs-tag">Web Design</span>
+    <span class="cs-tag">Freelance</span>
+  </div>
+  <a href="https://bettys-restaurant.vercel.app/" target="_blank" class="cs-live">View Live Site →</a>
+</div>
+
+<div class="cs-body">
+
+  <div class="cs-section">
+    <div class="cs-section-label">Challenge</div>
+    <p>A local Filipino restaurant needed an online presence that reflected their warm, homegrown brand — with no existing website, digital menu, or way for customers to find them online.</p>
+  </div>
+
+  <div class="cs-divider"></div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Approach</div>
+    <p>Designed and developed a full landing page using Next.js and Tailwind CSS. Focused on visual storytelling — featuring the menu, brand identity, and location in a clean, mobile-first layout. Deployed on Vercel for fast, free hosting.</p>
+  </div>
+
+  <div class="cs-divider"></div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Outcome</div>
+    <p>The restaurant now has a live, professional web presence that customers can find via search and social media links. The owner can share the URL directly with new customers.</p>
+  </div>
+
+  <div class="cs-divider"></div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Results</div>
+    <table class="cs-table">
+      <thead>
+        <tr><th>Metric</th><th>Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Delivery time</td><td>1 week</td></tr>
+        <tr><td>Mobile responsive</td><td>100%</td></tr>
+        <tr><td>Hosting cost</td><td>$0 (Vercel)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cs-divider"></div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Notes</div>
+    <ul class="cs-notes">
+      <li>Built as a freelance project for a local Ilonggo restaurant</li>
+      <li>Designed for easy sharing via social media links</li>
+      <li>No recurring cost to the client</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="cs-footer">
+  <a href="index.html#projects" class="cs-footer-back">← All Projects</a>
+  <span class="cs-footer-name">Jay Tee Dela Cruz</span>
+</div>
+
+</body>
+</html>
