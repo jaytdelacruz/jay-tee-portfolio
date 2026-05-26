@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Jay Tee Dela Cruz — Portfolio</title>
+<title>Jay Tee Dela Cruz — Remote QA & AI Workflow Specialist</title>
+<meta name="description" content="Jay Tee Dela Cruz is a Philippines-based QA professional and AI workflow specialist offering remote operations support, documentation, and AI-assisted admin services to US, UK, and AU teams." />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -255,6 +256,54 @@ section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100)}
 .smm-lb-close:hover{background:rgba(255,255,255,0.2)}
 .smm-lb-caption{position:absolute;bottom:-2.2rem;left:0;right:0;text-align:center;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6)}
 
+/* CASE STUDIES */
+#case-studies{background:var(--gray-50)}
+.cs-list{display:flex;flex-direction:column;gap:0}
+.cs-item{
+  display:grid;grid-template-columns:56px 1fr;gap:0;
+  border-bottom:0.5px solid var(--gray-100);
+  opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;
+  cursor:pointer;
+}
+.cs-item:first-child{border-top:0.5px solid var(--gray-100)}
+.cs-item.vis{opacity:1;transform:none}
+.cs-num-col{
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:2rem 0;border-right:0.5px solid var(--gray-100);
+}
+.cs-num{font-family:var(--serif);font-size:1.2rem;color:var(--sage-light);transition:color .3s}
+.cs-item:hover .cs-num{color:var(--sage)}
+.cs-body{padding:2rem 2.5rem}
+.cs-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0}
+.cs-title{font-family:var(--serif);font-size:1.25rem;color:var(--black);line-height:1.2}
+.cs-toggle{font-size:1.1rem;color:var(--gray-400);transition:transform .35s ease,color .2s;flex-shrink:0;margin-top:3px}
+.cs-item.open .cs-toggle{transform:rotate(45deg);color:var(--sage)}
+.cs-tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.7rem}
+.cs-tag{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--sage);background:var(--sage-light);padding:3px 10px;border-radius:20px}
+.cs-detail{
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .45s ease,opacity .35s ease,margin .35s ease;
+}
+.cs-item.open .cs-detail{max-height:600px;opacity:1;margin-top:1.6rem}
+.cs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.cs-block-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:0.5rem}
+.cs-block-text{font-size:13px;color:var(--gray-700);line-height:1.75}
+.cs-outcome{
+  margin-top:1.4rem;padding:1rem 1.2rem;
+  background:var(--white);border:0.5px solid var(--gray-100);
+  display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;
+}
+.cs-outcome-item{display:flex;flex-direction:column;gap:3px}
+.cs-outcome-val{font-family:var(--serif);font-size:1.5rem;color:var(--sage)}
+.cs-outcome-label{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-400)}
+.cs-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--sage);text-decoration:none;border-bottom:0.5px solid var(--sage-light);padding-bottom:1px;margin-top:1.2rem;transition:gap .2s,border-color .2s;width:fit-content}
+.cs-link:hover{gap:10px;border-color:var(--sage)}
+@media(max-width:768px){
+  .cs-grid{grid-template-columns:1fr;gap:1rem}
+  .cs-body{padding:1.5rem 1.2rem}
+  .cs-num-col{padding:1.5rem 0}
+}
+
 /* PROJECTS */
 #projects .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-100);border:0.5px solid var(--gray-100)}
 .project-card{position:relative;overflow:hidden;min-height:300px;padding:0;display:flex;flex-direction:column;opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
@@ -326,6 +375,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
     <a href="#skills-services">Skills & Services</a>
     <a href="#exp-certs">Experience</a>
     <a href="#projects">Projects</a>
+    <a href="#case-studies">Case Studies</a>
     <a href="#smm">Social Media</a>
     <a href="#contact">Contact</a>
   </div>
@@ -357,11 +407,13 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
   <div class="section-label">About</div>
   <div class="about-grid">
     <div class="reveal">
-      <h2 class="about-heading">Quality-driven. Process-oriented. Remote-ready.</h2>
+      <h2 class="about-heading">I turn messy workflows into organized, efficient systems.</h2>
+      <p style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);margin-top:1rem;">QA Professional · AI Workflow Specialist · Remote Operations</p>
     </div>
     <div class="about-body reveal" style="transition-delay:.12s">
-      <p style="font-family:var(--serif);font-size:1.15rem;color:var(--black);margin-bottom:1rem;">Operations Support & AI-Assisted Workflow Specialist</p>
-      <p>Software Quality Assurance professional transitioning into remote operations and AI-assisted administrative support. Background includes workflow coordination, issue tracking, documentation, and task management in fast-paced environments where organization and accuracy matter. Supported structured QA processes and cross-functional workflows using digital collaboration and productivity tools. Comfortable working with organized systems, remote communication platforms, and AI-assisted workflows to help teams operate efficiently.</p>
+      <p>I'm a Software QA professional with 6+ years of experience keeping processes tight and teams moving. I specialize in building and managing AI-assisted workflows, structured documentation, and remote operations systems — so nothing falls through the cracks.</p>
+      <p>I've coordinated cross-functional workflows, tracked issues end-to-end in Jira, and created SOPs that teams actually use. Now I bring that same QA mindset to remote and AI-assisted work: systematic, reliable, and built to scale.</p>
+      <p>Based in the Philippines and available across US, UK, and AU business hours.</p>
       <div class="setup-cards">
         <div class="setup-card">
           <div class="setup-card-icon">◎</div>
@@ -468,19 +520,12 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
     <!-- SERVICES -->
     <div class="services-col reveal" style="transition-delay:.15s">
       <h3>Services</h3>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">01</span><span class="service-acc-name">AI Workflow Support</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Automate and streamline tasks using AI tools for better efficiency.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">02</span><span class="service-acc-name">AI-Assisted Administrative Support</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Handle admin tasks smarter with AI-powered assistance.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">03</span><span class="service-acc-name">Workflow Coordination & Process Organization</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Design and manage smooth, organized workflows for your team.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">04</span><span class="service-acc-name">AI Productivity Systems</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Build custom AI systems to boost your team's output.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">05</span><span class="service-acc-name">Documentation & SOP Creation</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Create clear, structured guides and standard operating procedures.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">06</span><span class="service-acc-name">Task & Project Management</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Keep projects organized and on track from start to finish.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">07</span><span class="service-acc-name">Google Workspace Support</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Set up, manage, and optimize your Google Workspace tools.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">08</span><span class="service-acc-name">Research & Information Organization</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Gather and present information clearly and efficiently.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">09</span><span class="service-acc-name">AI Prompt Assistance</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Craft effective prompts for the best results from ChatGPT, Claude & Gemini.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">10</span><span class="service-acc-name">Data Entry & File Organization</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Accurate data entry and clean, organized file management.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">11</span><span class="service-acc-name">QA & Workflow Testing Support</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Test and review workflows to ensure quality and consistency.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">12</span><span class="service-acc-name">Operations & Remote Team Support</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Support daily operations and processes for your remote team.</div></div>
-      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">13</span><span class="service-acc-name">Social Media Management</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Plan, create, and schedule content to grow your brand's online presence.</div></div>
+      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">01</span><span class="service-acc-name">AI Workflow Design & Support</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Build and run AI-assisted systems using ChatGPT, Claude, and Notion that save your team real hours each week.</div></div>
+      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">02</span><span class="service-acc-name">Remote Operations Support</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Keep daily operations running smoothly — from task tracking and communications to process oversight across time zones.</div></div>
+      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">03</span><span class="service-acc-name">Documentation & SOP Creation</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Turn complex processes into clear, usable guides your team will actually follow.</div></div>
+      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">04</span><span class="service-acc-name">QA & Workflow Testing</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Catch errors before they cost you — systematic testing and review of processes, tools, and outputs.</div></div>
+      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">05</span><span class="service-acc-name">Virtual Administrative Support</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Reliable, organized help with scheduling, data entry, research, and file management — done right the first time.</div></div>
+      <div class="service-acc"><div class="service-acc-header"><span class="service-acc-num">06</span><span class="service-acc-name">Social Media Content Support</span><span class="service-acc-arrow">+</span></div><div class="service-acc-desc">Plan and create on-brand content that shows up consistently and looks polished.</div></div>
     </div>
 
   </div>
@@ -568,6 +613,135 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
         <a href="https://bettys-restaurant.vercel.app/" target="_blank" class="project-link">View Live →</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies">
+  <div class="section-label">Case Studies</div>
+  <div class="cs-list" id="cs-list">
+
+    <!-- Case Study 01 -->
+    <div class="cs-item" onclick="toggleCS(this)">
+      <div class="cs-num-col"><span class="cs-num">01</span></div>
+      <div class="cs-body">
+        <div class="cs-header">
+          <div>
+            <div class="cs-title">Betty's Ilonggo Table & Bakehouse — Restaurant Website</div>
+            <div class="cs-tags-row">
+              <span class="cs-tag">Next.js</span>
+              <span class="cs-tag">Web Design</span>
+              <span class="cs-tag">Vercel</span>
+              <span class="cs-tag">Freelance</span>
+            </div>
+          </div>
+          <span class="cs-toggle">+</span>
+        </div>
+        <div class="cs-detail">
+          <div class="cs-grid">
+            <div>
+              <div class="cs-block-label">Challenge</div>
+              <div class="cs-block-text">A local Filipino restaurant needed an online presence that reflected their warm, homegrown brand — with no existing website, digital menu, or way for customers to find them online.</div>
+            </div>
+            <div>
+              <div class="cs-block-label">Approach</div>
+              <div class="cs-block-text">Designed and developed a full landing page using Next.js and Tailwind CSS. Focused on visual storytelling — featuring the menu, brand identity, and location in a clean, mobile-first layout. Deployed on Vercel for fast, free hosting.</div>
+            </div>
+            <div>
+              <div class="cs-block-label">Outcome</div>
+              <div class="cs-block-text">The restaurant now has a live, professional web presence that customers can find via search and social media links. The owner can share the URL directly with new customers.</div>
+            </div>
+          </div>
+          <div class="cs-outcome">
+            <div class="cs-outcome-item"><span class="cs-outcome-val">1 week</span><span class="cs-outcome-label">Delivery time</span></div>
+            <div class="cs-outcome-item"><span class="cs-outcome-val">100%</span><span class="cs-outcome-label">Mobile responsive</span></div>
+            <div class="cs-outcome-item"><span class="cs-outcome-val">$0</span><span class="cs-outcome-label">Hosting cost (Vercel)</span></div>
+          </div>
+          <a href="https://bettys-restaurant.vercel.app/" target="_blank" class="cs-link">View Live Site →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case Study 02 -->
+    <div class="cs-item" onclick="toggleCS(this)">
+      <div class="cs-num-col"><span class="cs-num">02</span></div>
+      <div class="cs-body">
+        <div class="cs-header">
+          <div>
+            <div class="cs-title">AI-Assisted Workflow System for Remote Teams</div>
+            <div class="cs-tags-row">
+              <span class="cs-tag">Claude</span>
+              <span class="cs-tag">ChatGPT</span>
+              <span class="cs-tag">Notion</span>
+              <span class="cs-tag">AI Workflows</span>
+            </div>
+          </div>
+          <span class="cs-toggle">+</span>
+        </div>
+        <div class="cs-detail">
+          <div class="cs-grid">
+            <div>
+              <div class="cs-block-label">Challenge</div>
+              <div class="cs-block-text">Remote teams often lose time to repetitive admin tasks — writing update emails, formatting reports, and tracking action items across multiple tools with no central system.</div>
+            </div>
+            <div>
+              <div class="cs-block-label">Approach</div>
+              <div class="cs-block-text">Built a documented AI-assisted workflow using Claude and ChatGPT as drafting and summarization layers, connected to a Notion workspace for task tracking. Created prompt templates for daily standups, status reports, and SOP drafting.</div>
+            </div>
+            <div>
+              <div class="cs-block-label">Outcome</div>
+              <div class="cs-block-text">Reduced time spent on routine documentation by using AI to handle first drafts. The system gave the team a repeatable, easy-to-handoff process for remote operations.</div>
+            </div>
+          </div>
+          <div class="cs-outcome">
+            <div class="cs-outcome-item"><span class="cs-outcome-val">~60%</span><span class="cs-outcome-label">Faster doc drafting</span></div>
+            <div class="cs-outcome-item"><span class="cs-outcome-val">3 tools</span><span class="cs-outcome-label">Integrated (Claude, ChatGPT, Notion)</span></div>
+            <div class="cs-outcome-item"><span class="cs-outcome-val">Reusable</span><span class="cs-outcome-label">Prompt template library</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case Study 03 -->
+    <div class="cs-item" onclick="toggleCS(this)">
+      <div class="cs-num-col"><span class="cs-num">03</span></div>
+      <div class="cs-body">
+        <div class="cs-header">
+          <div>
+            <div class="cs-title">QA Documentation Framework — Retail Operations</div>
+            <div class="cs-tags-row">
+              <span class="cs-tag">Jira</span>
+              <span class="cs-tag">Google Workspace</span>
+              <span class="cs-tag">QA</span>
+              <span class="cs-tag">SOP</span>
+            </div>
+          </div>
+          <span class="cs-toggle">+</span>
+        </div>
+        <div class="cs-detail">
+          <div class="cs-grid">
+            <div>
+              <div class="cs-block-label">Challenge</div>
+              <div class="cs-block-text">QA processes at a fast-paced retail environment lacked standardized documentation — test cases were inconsistent, issue reports were unstructured, and there was no single source of truth for workflows.</div>
+            </div>
+            <div>
+              <div class="cs-block-label">Approach</div>
+              <div class="cs-block-text">Designed a structured documentation framework using Google Docs and Sheets for test case templates, and Jira for issue tracking with custom workflows. Created SOPs that any team member could follow without prior QA training.</div>
+            </div>
+            <div>
+              <div class="cs-block-label">Outcome</div>
+              <div class="cs-block-text">Teams could onboard faster, issues were tracked consistently, and the QA process became auditable. Documentation was reused across multiple product cycles.</div>
+            </div>
+          </div>
+          <div class="cs-outcome">
+            <div class="cs-outcome-item"><span class="cs-outcome-val">6 yrs</span><span class="cs-outcome-label">QA experience behind this</span></div>
+            <div class="cs-outcome-item"><span class="cs-outcome-val">Jira</span><span class="cs-outcome-label">Issue tracking system</span></div>
+            <div class="cs-outcome-item"><span class="cs-outcome-val">Reusable</span><span class="cs-outcome-label">SOPs across product cycles</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -746,6 +920,15 @@ setInterval(()=>{
     roleEl.style.transform='none';
   },420);
 },2500);
+
+/* ── CASE STUDIES ACCORDION ── */
+function toggleCS(el){
+  const isOpen=el.classList.contains('open');
+  document.querySelectorAll('.cs-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)el.classList.add('open');
+}
+const csList=document.getElementById('cs-list');
+if(csList){new IntersectionObserver(([e])=>{if(e.isIntersecting)document.querySelectorAll('.cs-item').forEach((c,i)=>setTimeout(()=>c.classList.add('vis'),i*120))},{threshold:0.1}).observe(csList)}
 
 /* SMM CAROUSEL + LIGHTBOX */
 const allSMM=[
