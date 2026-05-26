@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Jay Tee Dela Cruz — Remote QA & AI Workflow Specialist</title>
 <meta name="description" content="Jay Tee Dela Cruz is a Philippines-based QA professional and AI workflow specialist offering remote operations support, documentation, and AI-assisted admin services to US, UK, and AU teams." />
+<meta property="og:title" content="Jay Tee Dela Cruz — Remote QA & AI Workflow Specialist" />
+<meta property="og:description" content="Philippines-based QA professional with 6+ years experience. AI workflow design, remote operations, and documentation for US, UK, and AU teams." />
+<meta property="og:image" content="https://jay-tee-portfolio.vercel.app/profile.png" />
+<meta property="og:url" content="https://jay-tee-portfolio.vercel.app/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Jay Tee Dela Cruz — Remote QA & AI Workflow Specialist" />
+<meta name="twitter:description" content="Philippines-based QA professional with 6+ years experience. AI workflow design, remote operations, and documentation for US, UK, and AU teams." />
+<meta name="twitter:image" content="https://jay-tee-portfolio.vercel.app/profile.png" />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -340,6 +349,21 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
 .reveal.vis{opacity:1;transform:none}
 
+/* STATS STRIP */
+.stats-strip{display:flex;align-items:center;justify-content:space-around;padding:2.2rem 4rem;background:var(--black);flex-wrap:wrap;gap:2rem}
+.stat-item{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+.stat-val{font-family:var(--serif);font-size:1.7rem;color:#fff;line-height:1}
+.stat-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+/* SECONDARY CTA */
+.hero-cta-secondary{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray-700);text-decoration:none;border-bottom:0.5px solid var(--gray-100);padding-bottom:3px;transition:gap .2s,color .2s,border-color .2s}
+.hero-cta-secondary:hover{gap:12px;color:var(--black);border-color:var(--gray-400)}
+/* EXTRA TOOL CARDS */
+.tool-card:nth-child(9){animation-delay:.66s}
+.tool-card:nth-child(10){animation-delay:.73s}
+.tool-card:nth-child(11){animation-delay:.80s}
+.tool-card:nth-child(12){animation-delay:.87s}
+/* RESPONSIVE */
+@media(max-width:768px){.stats-strip{padding:1.5rem;gap:1.5rem}.stat-val{font-size:1.4rem}}
 /* RESPONSIVE */
 @media(max-width:768px){
   .hero{grid-template-columns:1fr}
@@ -387,19 +411,33 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
     <div class="hero-badge">🚀 LET'S GET TO WORK!</div>
     <h1 class="hero-name">Jay Tee<br><em>Dela Cruz</em></h1>
     <div class="hero-meta">
+      <div class="hero-availability">
+        <span class="dot"></span> Available for remote work
+      </div>
+      <div class="hero-meta-divider"></div>
       <div class="hero-role-row">
         <span class="hero-role-label">Currently —</span>
         <span class="hero-role-text" id="hero-role">QA Professional</span>
       </div>
     </div>
     <p class="hero-tagline" id="hero-tagline"></p>
-    <div class="magnetic-wrap" id="mag-wrap">
+    <div class="magnetic-wrap" id="mag-wrap" style="display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
       <a href="#contact" class="hero-cta" id="hero-cta">Get in touch →</a>
+      <a href="resume.pdf" download class="hero-cta-secondary">Download CV ↓</a>
     </div>
   </div>
   <div class="hero-right">
     <img src="profile.png" alt="Jay Tee Dela Cruz" class="hero-photo" />
+    <p class="hero-photo-caption">Jay Tee Dela Cruz<br>QA Professional · Remote Operations · Philippines</p>
   </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item"><span class="stat-val">6+</span><span class="stat-label">Years in QA</span></div>
+  <div class="stat-item"><span class="stat-val">US · UK · AU</span><span class="stat-label">Timezone Coverage</span></div>
+  <div class="stat-item"><span class="stat-val">100%</span><span class="stat-label">Remote Ready</span></div>
+  <div class="stat-item"><span class="stat-val">AI-Native</span><span class="stat-label">Workflow Automation</span></div>
 </div>
 
 <!-- ABOUT -->
@@ -471,6 +509,22 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
       <img src="https://icon.horse/icon/zoom.us?size=128" class="tool-logo" alt="Zoom" />
       <span class="tool-name">Zoom</span>
     </div>
+    <div class="tool-card">
+      <img src="https://icon.horse/icon/slack.com?size=128" class="tool-logo" alt="Slack" />
+      <span class="tool-name">Slack</span>
+    </div>
+    <div class="tool-card">
+      <img src="https://icon.horse/icon/trello.com?size=128" class="tool-logo" alt="Trello" />
+      <span class="tool-name">Trello</span>
+    </div>
+    <div class="tool-card">
+      <img src="https://icon.horse/icon/teams.microsoft.com?size=128" class="tool-logo" alt="Microsoft Teams" />
+      <span class="tool-name">MS Teams</span>
+    </div>
+    <div class="tool-card">
+      <img src="https://icon.horse/icon/loom.com?size=128" class="tool-logo" alt="Loom" />
+      <span class="tool-name">Loom</span>
+    </div>
   </div>
 </section>
 
@@ -484,27 +538,54 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
       <h3>Skills</h3>
 
       <div class="skill-group">
+        <div class="skill-group-label">Quality Assurance</div>
+        <div class="skill-badges">
+          <span class="skill-badge">Test Case Design</span>
+          <span class="skill-badge">Bug Reporting</span>
+          <span class="skill-badge">Regression Testing</span>
+          <span class="skill-badge">UAT</span>
+          <span class="skill-badge">Defect Life Cycle</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
         <div class="skill-group-label">Operations</div>
         <div class="skill-badges">
           <span class="skill-badge">Workflow Coordination</span>
           <span class="skill-badge">Administrative Support</span>
+          <span class="skill-badge">Project Coordination</span>
+          <span class="skill-badge">Task Prioritization</span>
         </div>
       </div>
 
+      <div class="skill-group">
+        <div class="skill-group-label">AI & Automation</div>
+        <div class="skill-badges">
+          <span class="skill-badge">Prompt Engineering</span>
+          <span class="skill-badge">AI Workflow Design</span>
+          <span class="skill-badge">Claude</span>
+          <span class="skill-badge">ChatGPT</span>
+        </div>
+      </div>
 
       <div class="skill-group">
         <div class="skill-group-label">Documentation</div>
         <div class="skill-badges">
           <span class="skill-badge">Process Documentation</span>
           <span class="skill-badge">SOP Creation</span>
+          <span class="skill-badge">Technical Writing</span>
+          <span class="skill-badge">Knowledge Base Management</span>
         </div>
       </div>
 
       <div class="skill-group">
-        <div class="skill-group-label">Productivity</div>
+        <div class="skill-group-label">Productivity Tools</div>
         <div class="skill-badges">
           <span class="skill-badge">Jira</span>
           <span class="skill-badge">Notion</span>
+          <span class="skill-badge">Trello</span>
+          <span class="skill-badge">Slack</span>
+          <span class="skill-badge">Google Workspace</span>
         </div>
       </div>
 
@@ -513,6 +594,9 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
         <div class="skill-badges">
           <span class="skill-badge">Professional Communication</span>
           <span class="skill-badge">Time Management</span>
+          <span class="skill-badge">Detail-Oriented</span>
+          <span class="skill-badge">Remote Collaboration</span>
+          <span class="skill-badge">Problem Solving</span>
         </div>
       </div>
     </div>
