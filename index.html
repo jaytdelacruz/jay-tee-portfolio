@@ -57,6 +57,24 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-links a{font-size:13px;color:var(--gray-400);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:var(--black)}
 
+/* HAMBURGER */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:101}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--black);transition:transform .3s,opacity .3s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:768px){
+  .nav-hamburger{display:flex}
+  .nav-links.open{
+    display:flex;flex-direction:column;gap:0;
+    position:fixed;top:0;left:0;right:0;bottom:0;
+    background:var(--white);z-index:100;
+    align-items:center;justify-content:center;
+    padding:2rem;
+  }
+  .nav-links.open a{font-size:1.3rem;letter-spacing:0.08em;padding:0.8rem 0;border-bottom:0.5px solid var(--gray-100);width:100%;text-align:center}
+}
+
 /* HERO */
 .hero{display:grid;grid-template-columns:3fr 2fr;min-height:92vh;border-bottom:0.5px solid var(--gray-100)}
 .hero-left{padding:5rem 4rem 5rem 5rem;display:flex;flex-direction:column;justify-content:center;border-right:0.5px solid var(--gray-100)}
@@ -364,24 +382,76 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
 .tool-card:nth-child(12){animation-delay:.87s}
 /* RESPONSIVE */
 @media(max-width:768px){.stats-strip{padding:1.5rem;gap:1.5rem}.stat-val{font-size:1.4rem}}
-/* RESPONSIVE */
+
+/* ── RESPONSIVE ── */
 @media(max-width:768px){
-  .hero{grid-template-columns:1fr}
-  .hero-right{order:-1;min-height:60vh}
-  .hero-left{padding:3rem 2rem}
-  nav{padding:1rem 1.5rem}
-  .nav-links{gap:1rem}
-  .nav-links a{font-size:11px}
+
+  /* NAV */
+  nav{padding:1rem 1.2rem}
+  .nav-links{display:none}
+
+  /* HERO */
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:2.5rem 1.5rem 2rem;border-right:none}
+  .hero-right{order:-1;min-height:280px;padding:2rem 1.5rem}
+  .hero-photo{width:160px;height:210px}
+  .hero-name{font-size:clamp(2.2rem,10vw,3rem);margin-bottom:1.2rem}
+  .hero-badge{margin-bottom:1.4rem;font-size:10px}
+  .hero-tagline{font-size:13px;min-height:auto;margin-bottom:2rem}
+  .hero-meta{gap:0.8rem;margin-bottom:1.2rem}
+  .magnetic-wrap{flex-direction:column;gap:1rem;align-items:flex-start}
+  .hero-cta,.hero-cta-secondary{font-size:12px}
+
+  /* SECTIONS */
   section{padding:3rem 1.5rem}
   #certifications{padding:2.5rem 1.5rem}
   #contact{padding:2.5rem 1.5rem}
+  #smm{padding:3rem 1.5rem}
+  #tools{padding:3rem 1.5rem}
+
+  /* ABOUT */
   #about .about-grid{grid-template-columns:1fr;gap:2rem}
+  .about-heading{font-size:1.6rem}
   .setup-cards{grid-template-columns:1fr}
+
+  /* TOOLS */
+  .tools-grid{gap:0.8rem;justify-content:flex-start}
+  .tool-card{padding:0.9rem 1rem;min-width:80px}
+  .tool-logo{width:36px;height:36px}
+  .tool-name{font-size:10px}
+
+  /* SKILLS & SERVICES */
   #skills-services .ss-grid{grid-template-columns:1fr;gap:3rem}
+
+  /* EXPERIENCE & CERTS */
   #exp-certs .ec-grid{grid-template-columns:1fr;gap:3rem}
-  #contact .contact-grid{grid-template-columns:1fr;gap:2rem}
-  #projects .projects-grid{grid-template-columns:1fr}
   .exp-item{grid-template-columns:1fr;gap:0.5rem}
+  .cert-item{flex-direction:column;align-items:flex-start;gap:0.6rem}
+  .cert-right{align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:8px}
+
+  /* PROJECTS */
+  #projects .projects-grid{grid-template-columns:1fr}
+  .project-card{min-height:260px}
+
+  /* SMM */
+  .smm-single-row{grid-template-columns:repeat(2,1fr);gap:0.7rem}
+  .smm-item img{height:200px}
+
+  /* CONTACT */
+  #contact .contact-grid{grid-template-columns:1fr;gap:2rem}
+
+  /* HIDE CURSOR ON TOUCH */
+  #cursor-dot,#cursor-ring{display:none}
+  body{cursor:auto}
+}
+
+/* Tablet tweaks */
+@media(min-width:769px) and (max-width:1024px){
+  .hero-left{padding:4rem 3rem}
+  .hero-name{font-size:clamp(2.4rem,4vw,3.4rem)}
+  .smm-single-row{grid-template-columns:repeat(2,1fr)}
+  #about .about-grid{grid-template-columns:1fr 1.5fr}
+  section{padding:4rem 3rem}
 }
 </style>
 </head>
@@ -393,16 +463,18 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
 
 <nav>
   <span class="nav-logo">Jay Tee Dela Cruz</span>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#tools">Tools</a>
-    <a href="#skills-services">Skills & Services</a>
-    <a href="#exp-certs">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#case-studies">Case Studies</a>
-    <a href="#smm">Social Media</a>
-    <a href="#contact">Contact</a>
+  <div class="nav-links" id="nav-links">
+    <a href="#about" onclick="closeNav()">About</a>
+    <a href="#tools" onclick="closeNav()">Tools</a>
+    <a href="#skills-services" onclick="closeNav()">Skills & Services</a>
+    <a href="#exp-certs" onclick="closeNav()">Experience</a>
+    <a href="#projects" onclick="closeNav()">Projects</a>
+    <a href="#smm" onclick="closeNav()">Social Media</a>
+    <a href="#contact" onclick="closeNav()">Contact</a>
   </div>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -1093,6 +1165,22 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft')prevImage();
   if(e.key==='Escape')closeLightbox();
 });
+
+/* NAV HAMBURGER */
+function toggleNav(){
+  const links=document.getElementById('nav-links');
+  const btn=document.getElementById('nav-hamburger');
+  links.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow=links.classList.contains('open')?'hidden':'';
+}
+function closeNav(){
+  const links=document.getElementById('nav-links');
+  const btn=document.getElementById('nav-hamburger');
+  links.classList.remove('open');
+  btn.classList.remove('open');
+  document.body.style.overflow='';
+}
 </script>
 </body>
 </html>
