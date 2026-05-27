@@ -405,9 +405,9 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
   .hero-photo{width:160px;height:210px}
   .hero-name{font-size:clamp(2.2rem,10vw,3rem);margin-bottom:1.2rem}
   .hero-badge{margin-bottom:1.4rem;font-size:10px}
-  .hero-tagline{font-size:13px;min-height:auto;margin-bottom:2rem}
-  .hero-meta{gap:0.8rem;margin-bottom:1.2rem}
-  .magnetic-wrap{flex-direction:column;gap:1rem;align-items:flex-start}
+  .hero-tagline{font-size:13px;min-height:auto;margin-bottom:2rem;max-width:100%}
+  .hero-meta{gap:0.8rem;margin-bottom:1.2rem;max-width:100%}
+  .magnetic-wrap{flex-direction:column;gap:1rem;align-items:flex-start;width:100%}
   .hero-cta,.hero-cta-secondary{font-size:12px}
 
   /* SECTIONS */
@@ -447,6 +447,15 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
 
   /* CONTACT */
   #contact .contact-grid{grid-template-columns:1fr;gap:2rem}
+  .contact-sub{max-width:100%}
+
+  /* STATS */
+  .stats-strip{padding:1.5rem 1.2rem}
+  .stat-val{font-size:1.3rem}
+
+  /* GLOBAL SAFETY NET */
+  *{max-width:100%;box-sizing:border-box}
+  img{max-width:100%}
 
   /* HIDE CURSOR ON TOUCH */
   #cursor-dot,#cursor-ring{display:none}
