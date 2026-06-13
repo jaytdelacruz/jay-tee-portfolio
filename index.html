@@ -290,10 +290,24 @@ section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100);overflow-x:h
 .smm-strip-thumb img{width:160px;height:200px;object-fit:cover;display:block;transition:transform .3s}
 .smm-strip-thumb:hover img{transform:scale(1.04)}
 .smm-slide-num{position:absolute;top:7px;right:7px;background:rgba(0,0,0,0.6);color:#fff;font-size:9px;letter-spacing:0.06em;padding:2px 7px;border-radius:20px}
-.smm-fika-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
-.smm-story-card{border-radius:10px;overflow:hidden;background:var(--black);position:relative;cursor:default}
-.smm-story-card video{width:100%;height:300px;object-fit:cover;display:block}
-.smm-story-label{position:absolute;bottom:0;left:0;right:0;padding:0.7rem;background:linear-gradient(transparent,rgba(0,0,0,0.65));color:#fff;font-size:9px;letter-spacing:0.1em;text-transform:uppercase}
+/* FIKA SHOWCASE — single post + story */
+.smm-fika-showcase{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;margin-bottom:1.5rem}
+.smm-showcase-block{display:flex;flex-direction:column;align-items:center;gap:0.7rem}
+.smm-showcase-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-400);align-self:flex-start}
+/* Instagram post card */
+.smm-post-frame{width:100%;border-radius:10px;overflow:hidden;background:var(--white);border:0.5px solid var(--gray-100);box-shadow:0 4px 20px rgba(53,50,30,0.1);cursor:pointer;transition:transform .3s,box-shadow .3s}
+.smm-post-frame:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(53,50,30,0.18)}
+.smm-post-topbar{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:0.5px solid var(--gray-100)}
+.smm-post-avatar{width:26px;height:26px;border-radius:50%;background:var(--black);display:flex;align-items:center;justify-content:center;font-size:11px;font-family:var(--serif);color:var(--white);flex-shrink:0}
+.smm-post-handle{font-size:11px;font-weight:500;color:var(--black);flex:1;letter-spacing:0.01em}
+.smm-post-dots{font-size:11px;color:var(--gray-400);letter-spacing:3px;line-height:1}
+.smm-post-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.smm-post-footer{padding:8px 12px;display:flex;align-items:center;gap:12px;font-size:15px;color:var(--gray-400)}
+/* Phone story frame */
+.smm-phone-outer{width:195px;border-radius:34px;border:4px solid #1a1a1a;background:#1a1a1a;box-shadow:0 0 0 1.5px #333,0 28px 64px rgba(0,0,0,0.3);overflow:hidden}
+.smm-phone-outer::before{content:'';display:block;height:20px;background:#1a1a1a}
+.smm-phone-outer::after{content:'';display:block;height:16px;background:#1a1a1a}
+.smm-phone-outer video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
 .smm-cat-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:1rem;margin-top:0}
 .smm-divider{height:0.5px;background:var(--gray-100);margin:2.5rem 0}
 
@@ -469,8 +483,8 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
   /* SMM */
   .smm-single-row{grid-template-columns:repeat(2,1fr);gap:0.7rem}
   .smm-item img{height:200px}
-  .smm-fika-row{grid-template-columns:1fr 1fr;gap:0.7rem}
-  .smm-story-card video{height:240px}
+  .smm-fika-showcase{grid-template-columns:1fr 1fr;gap:1.2rem}
+  .smm-phone-outer{width:150px}
   .smm-strip-thumb{width:130px}
   .smm-strip-thumb img{width:130px;height:165px}
   .smm-campaign-name{font-size:1.05rem}
@@ -1036,18 +1050,31 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
     </div>
 
     <!-- Single Post + Story -->
-    <div class="smm-fika-row">
-      <div class="smm-item" onclick="openLightbox(13)">
-        <img src="fika-single.jpg" alt="Fika Single Post" />
-        <div class="smm-click-hint">👆</div>
-        <div class="smm-item-overlay">
-          <span class="smm-item-cat">Single Post</span>
-          <span class="smm-item-label">Start Your Week</span>
+    <div class="smm-fika-showcase">
+      <!-- Instagram Post Card -->
+      <div class="smm-showcase-block">
+        <span class="smm-showcase-label">Single Post</span>
+        <div class="smm-post-frame" onclick="openLightbox(13)">
+          <div class="smm-post-topbar">
+            <div class="smm-post-avatar">F</div>
+            <span class="smm-post-handle">fika.coffee</span>
+            <span class="smm-post-dots">···</span>
+          </div>
+          <img class="smm-post-img" src="fika-single.jpg" alt="Start Your Week at Fika" />
+          <div class="smm-post-footer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="margin-left:auto"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </div>
         </div>
       </div>
-      <div class="smm-story-card">
-        <video src="fika-story.mp4" autoplay muted loop playsinline></video>
-        <div class="smm-story-label">Story · Vertical Format</div>
+
+      <!-- Phone Story Mockup -->
+      <div class="smm-showcase-block">
+        <span class="smm-showcase-label">Story · Vertical Format</span>
+        <div class="smm-phone-outer">
+          <video src="fika-story.mp4" autoplay muted loop playsinline></video>
+        </div>
       </div>
     </div>
   </div>
