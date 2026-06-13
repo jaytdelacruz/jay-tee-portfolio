@@ -291,8 +291,10 @@ section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100);overflow-x:h
 .smm-strip-thumb:hover img{transform:scale(1.04)}
 .smm-slide-num{position:absolute;top:7px;right:7px;background:rgba(0,0,0,0.6);color:#fff;font-size:9px;letter-spacing:0.06em;padding:2px 7px;border-radius:20px}
 /* FIKA SHOWCASE — single post + story */
-.smm-fika-showcase{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;margin-bottom:1.5rem}
+.smm-fika-showcase{display:flex;flex-wrap:wrap;gap:2.5rem;align-items:start;justify-content:center;margin-bottom:1.5rem}
 .smm-showcase-block{display:flex;flex-direction:column;align-items:center;gap:0.7rem}
+.smm-showcase-block--post{width:260px}
+.smm-showcase-block--story{width:200px}
 .smm-showcase-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-400);align-self:flex-start}
 /* Instagram post card */
 .smm-post-frame{width:100%;border-radius:10px;overflow:hidden;background:var(--white);border:0.5px solid var(--gray-100);box-shadow:0 4px 20px rgba(53,50,30,0.1);cursor:pointer;transition:transform .3s,box-shadow .3s}
@@ -1052,7 +1054,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
     <!-- Single Post + Story -->
     <div class="smm-fika-showcase">
       <!-- Instagram Post Card -->
-      <div class="smm-showcase-block">
+      <div class="smm-showcase-block smm-showcase-block--post">
         <span class="smm-showcase-label">Single Post</span>
         <div class="smm-post-frame" onclick="openLightbox(13)">
           <div class="smm-post-topbar">
@@ -1070,7 +1072,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
       </div>
 
       <!-- Phone Story Mockup -->
-      <div class="smm-showcase-block">
+      <div class="smm-showcase-block smm-showcase-block--story">
         <span class="smm-showcase-label">Story · Vertical Format</span>
         <div class="smm-phone-outer">
           <video src="fika-story.mp4" autoplay muted loop playsinline></video>
