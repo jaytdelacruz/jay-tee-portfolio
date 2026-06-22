@@ -307,6 +307,21 @@ section{padding:5rem 4rem;border-bottom:0.5px solid var(--gray-100);overflow-x:h
 .smm-phone-outer::before{content:'';display:block;height:20px;background:#1a1a1a}
 .smm-phone-outer::after{content:'';display:block;height:16px;background:#1a1a1a}
 .smm-phone-outer video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
+/* BRAND KIT */
+.smm-brandkit{margin-top:2.2rem;display:grid;grid-template-columns:1fr 1.3fr;gap:2rem;align-items:start}
+.smm-brandkit-img{width:100%;border-radius:10px;overflow:hidden;cursor:pointer;box-shadow:0 4px 20px rgba(53,50,30,0.1);transition:transform .3s,box-shadow .3s}
+.smm-brandkit-img:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(53,50,30,0.18)}
+.smm-brandkit-img img{width:100%;display:block}
+.smm-brandkit-info{display:flex;flex-direction:column;gap:1.4rem}
+.smm-bk-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-400);margin-bottom:0.6rem}
+.smm-bk-swatches{display:flex;gap:0.6rem;flex-wrap:wrap}
+.smm-bk-swatch{display:flex;flex-direction:column;align-items:center;gap:5px}
+.smm-bk-swatch-dot{width:36px;height:36px;border-radius:50%;border:0.5px solid rgba(0,0,0,0.08)}
+.smm-bk-swatch-hex{font-size:9px;color:var(--gray-400);letter-spacing:0.03em}
+.smm-bk-fonts{display:flex;gap:2rem;flex-wrap:wrap}
+.smm-bk-font-name{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px}
+.smm-bk-font-sample-serif{font-family:var(--serif);font-size:1.2rem;color:var(--black)}
+.smm-bk-font-sample-sans{font-family:var(--sans);font-size:1.05rem;color:var(--black)}
 .smm-cat-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:1rem;margin-top:0}
 .smm-divider{height:0.5px;background:var(--gray-100);margin:2.5rem 0}
 
@@ -489,6 +504,9 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
   .smm-showcase-block--story{align-items:flex-start}
   .smm-phone-outer{width:160px}
   .smm-campaign-name{font-size:1.05rem}
+  .smm-brandkit{grid-template-columns:1fr;gap:1.2rem}
+  .smm-bk-swatch-dot{width:30px;height:30px}
+  .smm-bk-fonts{gap:1.2rem}
 
   /* CONTACT */
   #contact .contact-grid{grid-template-columns:1fr;gap:2rem}
@@ -1022,6 +1040,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
         <span class="smm-format-tag">Carousel</span>
         <span class="smm-format-tag">Single Post</span>
         <span class="smm-format-tag">Story</span>
+        <span class="smm-format-tag">Brand Kit</span>
       </div>
     </div>
 
@@ -1075,6 +1094,35 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
         <span class="smm-showcase-label">Story · Vertical Format</span>
         <div class="smm-phone-outer">
           <video src="fika-story.mp4" autoplay muted loop playsinline></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand Kit -->
+    <div class="smm-brandkit">
+      <div class="smm-brandkit-img" onclick="openLightbox(14)">
+        <img src="fika-brand-kit.jpg" alt="Fika Brand Kit" />
+      </div>
+      <div class="smm-brandkit-info">
+        <div>
+          <div class="smm-bk-label">Color Palette</div>
+          <div class="smm-bk-swatches">
+            <div class="smm-bk-swatch"><div class="smm-bk-swatch-dot" style="background:#EAE3DD"></div><span class="smm-bk-swatch-hex">#EAE3DD</span></div>
+            <div class="smm-bk-swatch"><div class="smm-bk-swatch-dot" style="background:#C3BCAF"></div><span class="smm-bk-swatch-hex">#C3BCAF</span></div>
+            <div class="smm-bk-swatch"><div class="smm-bk-swatch-dot" style="background:#EDB480"></div><span class="smm-bk-swatch-hex">#EDB480</span></div>
+            <div class="smm-bk-swatch"><div class="smm-bk-swatch-dot" style="background:#948680"></div><span class="smm-bk-swatch-hex">#948680</span></div>
+            <div class="smm-bk-swatch"><div class="smm-bk-swatch-dot" style="background:#99725F"></div><span class="smm-bk-swatch-hex">#99725F</span></div>
+          </div>
+        </div>
+        <div class="smm-bk-fonts">
+          <div>
+            <div class="smm-bk-font-name">Header — Catchy Mager</div>
+            <div class="smm-bk-font-sample-serif">Aa Bb Cc</div>
+          </div>
+          <div>
+            <div class="smm-bk-font-name">Body — Glacial Indifference</div>
+            <div class="smm-bk-font-sample-sans">Aa Bb Cc</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1279,7 +1327,8 @@ const allSMM=[
   {src:'fika-c3.jpg',label:'Fika · Slide 3 — Work & Coffee'},
   {src:'fika-c4.jpg',label:'Fika · Slide 4 — Coffee Dates'},
   {src:'fika-c5.jpg',label:'Fika · Slide 5 — Your Fika Moment'},
-  {src:'fika-single.jpg',label:'Fika · Single Post'}
+  {src:'fika-single.jpg',label:'Fika · Single Post'},
+  {src:'fika-brand-kit.jpg',label:'Fika · Brand Kit'}
 ];
 let lbIndex=0;
 
